@@ -1,0 +1,505 @@
+/* sidebar.css - Diseño minimalista completo */
+/* Colores exclusivos: #003366, #158FCB, #D9E1EC, #FFFFFF */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --azul-profundo: #003366;
+    --azul-suave: #158FCB;
+    --gris-claro: #D9E1EC;
+    --blanco: #FFFFFF;
+    --gris-borde: #E5E9F0;
+    --gris-texto: #6B7280;
+}
+
+/* ============================================
+   SIDEBAR PRINCIPAL
+   ============================================ */
+.sidebar-modern {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 280px;
+    background: var(--blanco);
+    border-right: 1px solid var(--gris-borde);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Scrollbar */
+.sidebar-modern::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-modern::-webkit-scrollbar-track {
+    background: var(--gris-claro);
+}
+
+.sidebar-modern::-webkit-scrollbar-thumb {
+    background: var(--azul-profundo);
+    border-radius: 4px;
+}
+
+/* ============================================
+   HEADER DEL SIDEBAR - BLANCO TOTAL
+   ============================================ */
+.sidebar-header {
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--gris-borde);
+    background: var(--blanco);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.sidebar-brand .brand-logo-full img {
+    max-height: 42px;
+    width: auto;
+}
+
+.sidebar-toggle .toggle-btn {
+    background: transparent;
+    border: 1px solid var(--gris-borde);
+    color: var(--azul-profundo);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar-toggle .toggle-btn i {
+    font-size: 18px;
+}
+
+.sidebar-toggle .toggle-btn:hover {
+    background: var(--gris-claro);
+    border-color: var(--azul-suave);
+}
+
+/* ============================================
+   MENÚ DE NAVEGACIÓN
+   ============================================ */
+.sidebar-menu {
+    padding: 16px 0;
+}
+
+.nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Categorías */
+.nav-category {
+    padding: 20px 20px 8px 20px;
+}
+
+.category-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--gris-texto);
+}
+
+/* Items del menú */
+.nav-item {
+    margin: 2px 12px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: var(--azul-profundo);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.nav-link:hover {
+    background: var(--gris-claro);
+    color: var(--azul-suave);
+}
+
+/* Iconos */
+.nav-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--azul-profundo);
+    font-size: 18px;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover .nav-icon {
+    color: var(--azul-suave);
+}
+
+.nav-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* ============================================
+   SUBMENÚ
+   ============================================ */
+.nav-item.has-submenu .nav-link {
+    position: relative;
+}
+
+.submenu-arrow {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.2s ease;
+    font-size: 14px;
+    color: var(--azul-profundo);
+}
+
+.nav-item.has-submenu .nav-link[aria-expanded="true"] .submenu-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 0;
+    background: var(--gris-claro);
+    margin: 4px 0 4px 44px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.nav-subitem {
+    padding: 0;
+}
+
+.nav-sublink {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    color: var(--azul-profundo);
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.nav-sublink:hover {
+    background: var(--blanco);
+    color: var(--azul-suave);
+}
+
+.nav-subicon {
+    width: 24px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: var(--azul-profundo);
+}
+
+.nav-sublink:hover .nav-subicon {
+    color: var(--azul-suave);
+}
+
+.nav-subtext {
+    font-size: 13px;
+}
+
+/* ============================================
+   BOTÓN HAMBURGUESA (MÓVIL)
+   ============================================ */
+.hamburger-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 44px;
+    height: 44px;
+    background: var(--blanco);
+    border: 1px solid var(--gris-borde);
+    border-radius: 8px;
+    color: var(--azul-profundo);
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.hamburger-btn i {
+    font-size: 22px;
+}
+
+.hamburger-btn:hover {
+    background: var(--gris-claro);
+    border-color: var(--azul-suave);
+}
+
+/* ============================================
+   OVERLAY (MÓVIL)
+   ============================================ */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 51, 102, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ============================================
+   BOTÓN CERRAR (MÓVIL)
+   ============================================ */
+.sidebar-close-btn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--azul-profundo);
+    transition: all 0.2s ease;
+}
+
+.sidebar-close-btn i {
+    font-size: 20px;
+}
+
+.sidebar-close-btn:hover {
+    background: var(--gris-claro);
+}
+
+/* ============================================
+    ESCRITORIO (min-width: 761px)
+    ============================================ */
+@media screen and (min-width: 761px) {
+    /* Ajuste del contenido principal */
+    .main-panel {
+        margin-left: 280px;
+        width: calc(100% - 280px);
+        transition: all 0.3s ease;
+    }
+    
+    /* Ocultar botones móviles */
+    .hamburger-btn,
+    .sidebar-close-btn {
+        display: none;
+    }
+
+    body.sidebar-is-minimized .hamburger-btn {
+        display: flex;
+        left: 14px;
+        top: 14px;
+        width: 40px;
+        height: 40px;
+        z-index: 1100;
+    }
+    
+    /* Sidebar minimizado */
+    .sidebar-modern.sidebar-minimized {
+        width: 72px;
+    }
+    
+    .sidebar-modern.sidebar-minimized + .main-panel,
+    .sidebar-modern.sidebar-minimized ~ .main-panel {
+        margin-left: 72px;
+        width: calc(100% - 72px);
+    }
+    
+    .sidebar-modern.sidebar-minimized .nav-text,
+    .sidebar-modern.sidebar-minimized .category-title,
+    .sidebar-modern.sidebar-minimized .submenu-arrow {
+        display: none;
+    }
+    
+    .sidebar-modern.sidebar-minimized .nav-icon {
+        margin: 0;
+    }
+    
+    .sidebar-modern.sidebar-minimized .nav-link {
+        justify-content: center;
+        padding: 12px;
+    }
+    
+    .sidebar-modern.sidebar-minimized .sidebar-brand .brand-logo-full img {
+        max-width: 36px;
+    }
+    
+    .sidebar-modern.sidebar-minimized .sidebar-header {
+        justify-content: center;
+        padding: 20px 12px;
+    }
+
+    .sidebar-modern.sidebar-minimized .sidebar-brand {
+        display: none;
+    }
+    
+    .sidebar-modern.sidebar-minimized .sidebar-toggle {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .sidebar-modern.sidebar-minimized .sidebar-toggle .toggle-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .sidebar-modern.sidebar-minimized .submenu {
+        display: none !important;
+    }
+}
+
+/* ============================================
+    MÓVIL (max-width: 760px)
+    ============================================ */
+@media screen and (max-width: 760px) {
+    /* Mostrar botón hamburguesa */
+    .hamburger-btn {
+        display: flex;
+    }
+    
+    /* Mostrar botón cerrar */
+    .sidebar-close-btn {
+        display: flex;
+    }
+    
+    /* Ocultar botón toggle en móvil */
+    .sidebar-toggle {
+        display: none;
+    }
+    
+    /* Sidebar oculto por defecto */
+    .sidebar-modern {
+        transform: translateX(-100%);
+        box-shadow: none;
+        transition: transform 0.3s ease;
+    }
+    
+    /* Sidebar visible */
+    .sidebar-modern.show {
+        transform: translateX(0);
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Ajuste del contenido */
+    .main-panel {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+    
+    .content-wrapper {
+        padding-top: 72px;
+    }
+    
+    /* Animación de entrada */
+    .sidebar-modern.show .nav-item {
+        animation: fadeInUp 0.3s ease forwards;
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .sidebar-modern.show .nav-item:nth-child(1) { animation-delay: 0.02s; }
+    .sidebar-modern.show .nav-item:nth-child(2) { animation-delay: 0.04s; }
+    .sidebar-modern.show .nav-item:nth-child(3) { animation-delay: 0.06s; }
+    .sidebar-modern.show .nav-item:nth-child(4) { animation-delay: 0.08s; }
+    .sidebar-modern.show .nav-item:nth-child(5) { animation-delay: 0.10s; }
+    .sidebar-modern.show .nav-item:nth-child(6) { animation-delay: 0.12s; }
+    .sidebar-modern.show .nav-item:nth-child(7) { animation-delay: 0.14s; }
+    
+    /* Ajustes de padding */
+    .sidebar-header {
+        padding: 18px 20px;
+    }
+    
+    .nav-link {
+        padding: 10px 16px;
+    }
+}
+
+/* ============================================
+   ESTILOS GLOBALES
+   ============================================ */
+/* Fondo de página */
+body {
+    background: var(--gris-claro);
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.content-wrapper {
+    background: var(--gris-claro);
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* Reset de todos los gradientes y colores no deseados */
+.gradient-blue,
+.gradient-purple,
+.gradient-red,
+[class*="gradient"] {
+    background: transparent !important;
+    color: var(--azul-profundo) !important;
+}
+
+/* Links activos */
+.nav-link.active {
+    background: var(--gris-claro);
+    color: var(--azul-suave);
+}
+
+.nav-link.active .nav-icon {
+    color: var(--azul-suave);
+}
+
+/* Quitar cualquier sombra o efecto no deseado */
+.sidebar-modern,
+.sidebar-header,
+.nav-link,
+.nav-icon {
+    box-shadow: none;
+}

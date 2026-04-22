@@ -1,0 +1,102 @@
+/* Estilos para submenú */
+.nav-item.has-submenu .nav-link {
+    position: relative;
+}
+
+.submenu-arrow {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.nav-item.has-submenu .nav-link[aria-expanded="true"] .submenu-arrow {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 0;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 0 0 8px 8px;
+    margin: 0;
+    overflow: hidden;
+}
+
+.nav-subitem {
+    padding: 0;
+}
+
+.nav-sublink {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px 12px 60px;
+    color: #495057;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-sublink:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #ffffff;
+}
+
+.nav-subicon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: #6c757d;
+}
+
+.nav-sublink:hover .nav-subicon {
+    color: #ffffff;
+}
+
+.nav-subtext {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Ajustar el padding cuando el sidebar está minimizado */
+.sidebar-modern:not(.sidebar-minimized) .submenu {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+/* Cuando el sidebar está minimizado, ocultar el submenú */
+.sidebar-modern.sidebar-minimized .submenu {
+    display: none !important;
+}
+
+/* Colores para los iconos */
+.gradient-blue {
+    background: linear-gradient(135deg, #1e88e5, #0d47a1);
+    color: white;
+}
+
+.gradient-purple {
+    background: linear-gradient(135deg, #8e24aa, #4a148c);
+    color: white;
+}
+
+.gradient-red {
+    background: linear-gradient(135deg, #f44336, #c62828);
+    color: white;
+}
+
+.nav-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+}

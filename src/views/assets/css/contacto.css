@@ -1,0 +1,219 @@
+.contact-section {
+    padding: 50px 0;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+}
+
+.contact-inner {
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.section-title-left {
+    flex: 1;
+    text-align: left;
+    padding-right: 20px;
+}
+
+.titulo-uno {
+    color: #004080;
+    font-weight: bold;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.titulo-dos {
+    color: #007bff;
+    font-size: 32px;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.contact-map {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.contact-form {
+    padding-left: 20px;
+}
+
+#section-title {
+    margin-bottom: 30px;
+}
+
+.titulo-tres {
+    font-weight: bold;
+    color: #004080;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.titulo-cuatro {
+    font-size: 24px;
+    color: #34495e;
+    margin-top: 10px;
+}
+
+.contenedor-nombre {
+    position: relative;
+}
+
+.form-nombre {
+    padding-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.icono-nombre {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3498db;
+}
+
+.contenedor-correo {
+    position: relative;
+}
+
+.formulario-email {
+    padding-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.icono-email {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #3498db;
+}
+
+.formulario-asunto {
+    padding-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.contenedor-mensaje {
+    position: relative;
+}
+
+.formulario-mensaje {
+    padding-left: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.icono-mensaje {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #3498db;
+}
+
+.contenedor-boton {
+    text-align: center;
+}
+
+#submitBtn {
+    background: none;
+    color: #3498db;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#mensajeRespuesta {
+    margin-top: 15px;
+}
+
+#enviarM {
+    margin-right: 8px;
+}
+
+.informacion-contacto {
+    display: flex;
+    justify-content: space-between;
+}
+
+.contactanos {
+    margin-right: 20px;
+}
+
+.contacto-h5 {
+    font-size: 24px;
+    color: #34495e;
+    margin-top: 10px;
+}
+
+.lista-contacto {
+    list-style: none;
+    padding-left: 0;
+}
+
+.direccion-contacto {
+    margin-bottom: 10px;
+}
+
+#icono-direccion {
+    color: #3498db;
+    margin-right: 10px;
+}
+
+#telefono-contacto {
+    margin-bottom: 10px;
+}
+
+#icono-telefono {
+    color: #3498db;
+    margin-right: 10px;
+}
+#icono-correo{
+    color: #3498db; 
+    margin-right: 10px;
+}
+.info-empresa{
+    margin-left: 20px; 
+    text-align: right;
+}
+#titulo-empresa{
+    font-size: 24px; 
+    color: #34495e; 
+    margin-top: 10px;
+}
+.texto-p{
+    margin-bottom: 15px; 
+    color: #7f8c8d;
+}
+.texto-p2{
+    color: #7f8c8d;
+}
+
+@media (max-width: 500px) {
+    .titulo-uno{
+        font-size: 25px;
+        text-align: center;
+    }
+    .titulo-dos{
+        font-size: 18px;
+        text-align: center;
+    }
+  .contenedor-mapa {
+    display: none !important;
+  }
+  .info-empresa{
+    display: none !important;
+  }
+  
+}
+
+

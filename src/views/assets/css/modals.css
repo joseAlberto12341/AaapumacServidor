@@ -1,0 +1,551 @@
+#titulo-principal {
+    font-size: 42px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 20px;
+}
+
+.boton-guardar {
+    background-color: #003366;
+    border-color: #003366;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.boton-guardar:hover {
+    background-color: #002147;
+    border-color: #002147;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.subtitulo {
+    color: #e2e2e2;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 15px 0;
+}
+
+.imagen-tabla {
+    width: 100px;
+    height: auto;
+    max-height: 80px;
+    object-fit: cover;
+}
+
+#contenedor-modalAviso {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#modal-headerAviso {
+    background-color: #003366;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#icono-altaAviso {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.cerrar {
+    filter: invert(1);
+    position: absolute;
+    right: 15px;
+}
+
+.cuerpo-modal-alta {
+    padding: 2rem;
+}
+
+.titulo-modal {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+.descripcion-modal {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+.imagen-modal {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.estado-modal {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+#boton-cancelar {
+    border-radius: 5px;
+}
+
+#boton-guardar {
+    background-color: #003366;
+    border-color: #003366;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#contenedor-editarAviso {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.header-modaleditarAviso {
+    background-color: #f6eda1;
+    color: #e39215;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#icono-editarAviso {
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.cerrarEditar {
+    filter: invert(1);
+    position: absolute;
+    right: 15px;
+}
+
+#cuerpo-editar {
+    padding: 2rem;
+}
+
+.editar-titulo {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+.editar-descripcion {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+.editar-imagen {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#mostrarImegen-editar {
+    width: 100px;
+    height: auto;
+    margin-top: 5px;
+}
+
+.estado-editar {
+    border-radius: 0 5px 5px 0;
+    border: 1px solid #ccc;
+}
+
+.actualizar {
+    background-color: #f6eda1;
+    border-color: #f6eda1;
+    color: #e39215;
+    border-radius: 5px;
+
+}
+.paginador {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 10px 0;
+}
+
+.paginador form {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f7f9fc;
+  border: 1px solid #d9e2ec;
+  border-radius: 999px;
+  padding: 6px 10px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.paginador label {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4a5a6a;
+  white-space: nowrap;
+}
+
+.paginador select.form-select {
+  min-width: 72px;
+  height: 30px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 1px solid #c9d6e2;
+  background-color: #ffffff;
+  padding: 2px 26px 2px 10px;
+  color: #003366;
+  box-shadow: none;
+}
+
+.paginador select.form-select:focus {
+  border-color: #003366;
+  box-shadow: 0 0 0 0.15rem rgba(0, 51, 102, 0.15);
+}
+/* Solo para la celda de descripción */
+.description-cell {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 300px;
+  line-height: 1.4;
+}
+/* Salto de línea solo para la celda de descripción */
+.description-cell {
+  white-space: normal;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 300px;
+  min-width: 150px;
+  line-height: 1.4;
+  vertical-align: top;
+}
+/* ===== FILTRO MEJORADO ===== */
+.filtro-barra {
+    background: #f8f9fc;
+    border-radius: 16px;
+    padding: 12px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e9ecef;
+}
+
+.filtro-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.filtro-input-wrapper {
+    flex: 2;
+    min-width: 240px;
+    position: relative;
+}
+
+.filtro-icono {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9aa8b9;
+    font-size: 1.2rem;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.filtro-input {
+    width: 100%;
+    padding: 10px 12px 10px 40px;
+    font-size: 0.9rem;
+    border: 1px solid #e2e6ea;
+    border-radius: 12px;
+    background: white;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.filtro-input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+}
+
+.filtro-acciones {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn-filtro {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-radius: 30px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+.btn-filtro i {
+    font-size: 1.1rem;
+}
+
+.btn-filtro-primary {
+    background: #3b82f6;
+    color: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.btn-filtro-primary:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(59,130,246,0.3);
+    color: white;
+}
+
+.btn-filtro-secondary {
+    background: #f1f3f5;
+    color: #4b5563;
+}
+
+.btn-filtro-secondary:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+    color: #1f2937;
+}
+
+/* ===== PAGINADOR MEJORADO ===== */
+.paginador-moderno {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.paginador-form {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.paginador-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6c7a91;
+    font-size: 0.85rem;
+}
+
+.paginador-info i {
+    font-size: 1.2rem;
+    color: #8b9ab0;
+}
+
+.paginador-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8fafc;
+    padding: 4px 12px 4px 8px;
+    border-radius: 40px;
+    border: 1px solid #e2e8f0;
+}
+
+.paginador-select {
+    padding: 6px 28px 6px 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: none;
+    background: white;
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+    color: #1e293b;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+}
+
+.paginador-select:hover {
+    background-color: #f1f5f9;
+}
+
+.paginador-selector span {
+    font-size: 0.8rem;
+    color: #5b6e8c;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .filtro-grupo {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filtro-acciones {
+        justify-content: stretch;
+    }
+    
+    .btn-filtro {
+        justify-content: center;
+        flex: 1;
+    }
+    
+    .paginador-form {
+        justify-content: center;
+    }
+    
+    .paginador-selector span {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 576px) {
+  .paginador {
+    justify-content: center;
+  }
+
+  .paginador form {
+    width: 100%;
+    justify-content: space-between;
+    border-radius: 12px;
+  }
+
+  .paginador label {
+    font-size: 11px;
+  }
+
+  .paginador select.form-select {
+    width: 90px;
+  }
+}
+
+@media (max-width: 460px) {
+    #titulo-principal {
+        font-size: 35px;
+        font-family: 'Arial', sans-serif;
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 10px;
+    }
+
+    .subtitulo {
+        color: #e2e2e2;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 8px 0;
+    }
+
+    .tabla {
+        font-size: 12px;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tabla table {
+        min-width: 100%;
+        display: table;
+    }
+
+    .tabla thead {
+        display: table-header-group;
+    }
+
+    .tabla tbody {
+        display: table-row-group;
+    }
+
+    .tabla tr {
+        display: table-row;
+    }
+
+    .tabla td,
+    .tabla th {
+        padding: 0.5rem;
+        font-size: 11px;
+        word-wrap: break-word;
+        word-break: break-word;
+    }
+
+    .tabla th {
+        white-space: nowrap;
+    }
+
+    .tabla .imagen-tabla {
+        width: 60px;
+        height: auto;
+        max-height: 50px;
+    }
+
+    .tabla .btn-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .tabla .btn-sm {
+        padding: 0.35rem 0.5rem;
+        font-size: 10px;
+        width: 100%;
+    }
+
+    .tabla small {
+        font-size: 10px;
+        line-height: 1.3;
+    }
+
+    .tabla .badge {
+        font-size: 10px;
+        padding: 0.25em 0.5em;
+    }
+
+    .boton-guardar {
+        background-color: #003366;
+        border-color: #003366;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        font-size: 10px;
+        font-weight: 600;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    .boton-guardar:hover {
+        background-color: #002147;
+        border-color: #002147;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+@media (max-width: 991px) {
+    .boton-guardar {
+        padding: 0.5rem 1rem;
+        font-size: 9px;
+    }
+        #titulo-principal {
+        font-size: 35px;
+        font-family: 'Arial', sans-serif;
+        font-weight: 700;
+        color: #003366;
+        margin-bottom: 10px;
+    }
+
+    .subtitulo {
+        color: #e2e2e2;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        margin: 8px 0;
+    }
+
+
+}

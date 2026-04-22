@@ -1,0 +1,28 @@
+{
+    "name": "aaapumac/sistema",
+    "description": "Sistema de gestión AAAPUMAC",
+    "type": "project",
+    "require": {
+        "botman/botman": "^2.8",
+        "endroid/qr-code": "^5.0",
+        "phpmailer/phpmailer": "^6.9",
+        "setasign/fpdf": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "src/controllers/",
+            "Models\\": "src/models/",
+            "Utils\\": "src/utils/",
+            "Repositories\\": "src/repositories/",
+            "Faces\\": "src/faces/",
+            "Views\\": "src/views/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

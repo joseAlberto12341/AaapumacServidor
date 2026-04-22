@@ -1,0 +1,138 @@
+/* Estilos minimalistas - MANTENIDOS */
+.notification-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.notification-tabs .nav-tabs {
+    background: none;
+}
+
+.notification-tabs .nav-link {
+    color: #6c757d;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    margin-right: 8px;
+}
+
+.notification-tabs .nav-link.active {
+    color: #0d6efd;
+    background: none;
+    border-bottom: 2px solid #0d6efd;
+}
+
+.notification-tabs .nav-link:hover {
+    color: #0d6efd;
+    border-bottom: 2px solid rgba(13, 110, 253, 0.3);
+}
+
+.notification-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.notification-item {
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa;
+}
+
+.notification-unread {
+    background-color: rgba(13, 110, 253, 0.03);
+}
+
+.unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-top: 8px;
+}
+
+.read-icon {
+    width: 8px;
+    height: 8px;
+    margin-top: 8px;
+}
+
+.text-muted.small {
+    font-size: 0.875rem;
+    line-height: 1.4;
+}
+
+/* Estado vacío */
+.text-center.py-5 i {
+    opacity: 0.5;
+}
+
+/* Enlaces y botones */
+.btn-link {
+    font-size: 0.8125rem;
+}
+
+.btn-link:hover {
+    opacity: 0.8;
+}
+
+/* Paginación - Estilo minimalista */
+.pagination-sm .page-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    border: 1px solid #dee2e6;
+    color: #6c757d;
+    background-color: white;
+}
+
+.pagination-sm .page-item.active .page-link {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: white;
+}
+
+.pagination-sm .page-item.disabled .page-link {
+    color: #adb5bd;
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+}
+
+.pagination-sm .page-link:hover {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+}
+
+/* Badge para tipos de notificación */
+.badge.bg-info, .badge.bg-secondary {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .notification-item {
+        padding: 16px 0;
+    }
+    
+    .notification-header,
+    .notification-list {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .notification-tabs .nav-link {
+        padding: 8px 12px;
+        font-size: 0.8125rem;
+    }
+    
+    .pagination-sm .page-link {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+    }
+    
+    .d-flex.gap-2 {
+        flex-wrap: wrap;
+        gap: 0.5rem !important;
+    }
+}

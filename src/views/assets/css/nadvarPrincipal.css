@@ -1,0 +1,723 @@
+
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* TOPBAR */
+        .topbar-area {
+            background-color: #003366;
+            padding: 10px 0;
+            border-bottom: 1px solid #00264d;
+        }
+
+        .topbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .topbar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .topbar-contact ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .topbar-contact li {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+        }
+
+        .topbar-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 8px;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .topbar-contact a:hover {
+            opacity: 0.8;
+        }
+
+        .topbar-social {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            font-size: 16px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* HEADER NAV - VERSIÓN FLEXIBLE */
+        .header-nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 15px;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 70px;
+            position: relative;
+        }
+
+        .site-logo img {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s;
+        }
+
+        .site-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* MENÚ ESCRITORIO (siempre visible) */
+        .desktop-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .desktop-menu .menu-items ul {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .desktop-menu .menu-items li {
+            position: relative;
+        }
+
+        .desktop-menu .menu-items a, 
+        .desktop-menu .menu-items > li > button {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            white-space: nowrap;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        /* BOTÓN ESPECIAL SERVICIOS EN LÍNEA */
+        .desktop-menu .menu-items .servicios-btn {
+            background: #F8F8F8;
+            color: #000000;
+            padding: 8px 22px;
+            font-size: 13px;
+            border-radius: 5px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-right: 5px;
+            transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+        }
+        .desktop-menu .menu-items .servicios-btn:hover {
+            background: #fafafa;
+            color: #003366;
+           
+        }
+
+        .desktop-menu .menu-items a:hover, 
+        .desktop-menu .menu-items > li > button:hover {
+            background-color: #f0f0f0;
+            color: #003366;
+        }
+
+        /* ESTILO ESPECIAL PARA BOTONES DE ACCIÓN (Iniciar Sesión y Bienvenido) */
+        .desktop-menu .menu-items .login-btn,
+        .desktop-menu .menu-items .welcome-btn {
+            background-color: #003366;
+            color: white !important;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+            margin-left: 5px;
+        }
+
+        .desktop-menu .menu-items .login-btn:hover,
+        .desktop-menu .menu-items .welcome-btn:hover {
+            background-color: #00264d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Botón de Iniciar Sesión en formulario */
+        .desktop-menu .menu-items form button.btn-primary {
+            background-color: #003366;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .desktop-menu .menu-items form button.btn-primary:hover {
+            background-color: #00264d;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* SUBMENÚS ESCRITORIO */
+        .desktop-menu .submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 4px;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .desktop-menu .submenu li {
+            width: 100%;
+        }
+
+        .desktop-menu .submenu a {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+            white-space: nowrap;
+        }
+
+        .desktop-menu .submenu a:hover {
+            background: #f5f5f5;
+            color: #003366;
+        }
+
+        .desktop-menu .has-submenu:hover .submenu {
+            display: block;
+        }
+
+        /* BOTÓN MENÚ MÓVIL */
+        .mobile-menu-btn {
+            display: none;
+            background: #003366;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 20px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* MENÚ MÓVIL (oculto por defecto) */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            overflow-y: auto;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+            display: block;
+        }
+
+        .mobile-menu-header {
+            background: #003366;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-menu-header .site-logo img {
+            height: 40px;
+        }
+
+        .close-menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-content {
+            padding: 20px;
+        }
+
+        .mobile-menu-items ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-menu-items li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu-items a, 
+        .mobile-menu-items .menu-toggle-btn {
+            display: block;
+            padding: 15px 0;
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .mobile-menu-items .menu-toggle-btn::after {
+            content: '›';
+            position: absolute;
+            right: 0;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .mobile-menu-items .menu-toggle-btn.active::after {
+            transform: rotate(90deg);
+        }
+
+        /* ESTILO PARA BOTONES DE ACCIÓN EN MÓVIL */
+        .mobile-menu-items .login-toggle-btn,
+        .mobile-menu-items .welcome-toggle-btn {
+            background-color: #003366;
+            color: white !important;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 10px;
+            padding: 12px 20px;
+            font-weight: 500;
+        }
+
+        .mobile-menu-items .login-toggle-btn::after,
+        .mobile-menu-items .welcome-toggle-btn::after {
+            color: white;
+        }
+
+        .mobile-menu-items .login-toggle-btn:hover,
+        .mobile-menu-items .welcome-toggle-btn:hover {
+            background-color: #00264d;
+        }
+
+        /* Botón de Iniciar Sesión en móvil */
+        .btn-mobile-login {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            width: 100%;
+            margin-top: 20px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .btn-mobile-login:hover {
+            background-color: #00264d;
+        }
+
+        .mobile-submenu {
+            display: none;
+            padding-left: 20px;
+            list-style: none;
+            background: #f9f9f9;
+            margin: 0 -20px;
+            padding: 0 20px 0 40px;
+        }
+
+        .mobile-submenu.active {
+            display: block;
+        }
+
+        .mobile-submenu li {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .mobile-submenu a {
+            padding: 12px 0;
+            font-size: 14px;
+        }
+
+        /* OVERLAY MÓVIL */
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* CHATBOT ESTILOS (mantener) */
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9997;
+            cursor: pointer;
+            width: 60px;
+            height: 60px;
+        }
+
+        .chat-icon img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+        .chat-icon img:hover {
+            transform: scale(1.1);
+        }
+
+        .chat-alert {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            right: 0;
+            background: #003366;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            white-space: nowrap;
+            animation: fadeInOut 2s ease-in-out;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .chat-popup .wrapper {
+            width: 370px;
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid lightgrey;
+            border-top: 0px;
+            position: fixed;
+            bottom: 70px;
+            right: 80px;
+            z-index: 9997;
+        }
+
+        .chat-popup .title {
+            background: #1c85fd;
+            color: #fff;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 60px;
+            text-align: center;
+            border-bottom: 1px solid #000000;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .chat-popup .form {
+            padding: 20px 15px;
+            min-height: 400px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .chat-popup .form .inbox {
+            width: 100%;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .chat-popup .form .user-inbox {
+            justify-content: flex-end;
+            margin: 13px 0;
+        }
+
+        .chat-popup .form .inbox .icon {
+            height: 40px;
+            width: 40px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            font-size: 18px;
+            background: #1c85fd;
+        }
+
+        .chat-popup .form .inbox .msg-header {
+            max-width: 53%;
+            margin-left: 10px;
+        }
+
+        .chat-popup .form .msg-header p {
+            color: #fff;
+            background: #1c85fd;
+            border-radius: 10px;
+            padding: 8px 10px;
+            font-size: 14px;
+            word-break: break-all;
+        }
+
+        .chat-popup .form .user-inbox .msg-header p {
+            color: #333;
+            background: #efefef;
+        }
+
+        .chat-popup .typing-field {
+            display: flex;
+            height: 60px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-evenly;
+            background: #efefef;
+            border-top: 1px solid #d9d9d9;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .chat-popup .typing-field .input-data {
+            height: 40px;
+            width: 335px;
+            position: relative;
+        }
+
+        .chat-popup .typing-field .input-data input {
+            height: 100%;
+            width: 100%;
+            outline: none;
+            border: 1px solid transparent;
+            padding: 0 80px 0 15px;
+            border-radius: 3px;
+            font-size: 15px;
+            background: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .chat-popup .typing-field .input-data input:focus {
+            border-color: rgba(0, 123, 255, 0.8);
+        }
+
+        .chat-popup .input-data input::placeholder {
+            color: #999999;
+            transition: all 0.3s ease;
+        }
+
+        .chat-popup .input-data input:focus::placeholder {
+            color: #bfbfbf;
+        }
+
+        .chat-popup .typing-field .input-data button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            height: 30px;
+            width: 65px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            opacity: 0;
+            pointer-events: none;
+            border-radius: 3px;
+            background: #1c85fd;
+            border: 1px solid #1c85fd;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .chat-popup .typing-field .input-data input:valid~button {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .chat-popup .typing-field .input-data button:hover {
+            background: #1c2bfd;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 0px;
+            right: 15px;
+            cursor: pointer;
+        }
+
+        .chat-popup {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .bot-buttons {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s forwards;
+            display: flex;
+            justify-content: center;
+        }
+
+        .bot-buttons button {
+            margin: 5px;
+        }
+
+        /* MEDIA QUERIES para diseño responsivo*/
+        @media (max-width: 992px) {
+            .topbar-row {
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .topbar-contact ul {
+                justify-content: center;
+            }
+            
+            .desktop-menu .menu-items ul {
+                gap: 10px;
+            }
+            
+            .desktop-menu .menu-items a, 
+            .desktop-menu .menu-items > li > button {
+                padding: 6px 10px; 
+                font-size: 13px;
+            }
+            
+            .desktop-menu .menu-items .login-btn,
+            .desktop-menu .menu-items .welcome-btn,
+            .desktop-menu .menu-items form button.btn-primary {
+                padding: 6px 15px;
+                font-size: 13px;
+            }
+        }
+
+        /* EN MÓVIL OCULTAR MENÚ ESCRITORIO Y MOSTRAR BOTÓN */
+        @media (max-width: 866px) {
+            .desktop-menu {
+                display: none !important;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .site-logo img {
+                height: 40px;
+            }
+            
+            .topbar-contact ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .topbar-social {
+                margin-top: 10px;
+            }
+            
+            .chat-popup .wrapper {
+                width: 90vw;
+                right: 5vw;
+                bottom: 100px;
+            }
+        }
+
+        @media (max-width: 756px) {
+            .topbar-area {
+                padding: 8px 0;
+            }
+            
+            .topbar-contact a {
+                font-size: 12px;
+            }
+            
+            .social-icons a {
+                font-size: 14px;
+            }
+            
+            .chat-icon {
+                width: 50px;
+                height: 50px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
