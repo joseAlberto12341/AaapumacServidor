@@ -1,0 +1,218 @@
+ .job-card {
+     background-color: #f8f9fa;
+     border-radius: 4px;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+     margin-bottom: 25px;
+     overflow: hidden;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     padding: 20px;
+     display: flex;
+     flex-direction: column;
+     height: 500px;
+     animation: fadeIn 0.5s ease;
+ }
+
+ .job-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+ }
+
+ @keyframes fadeIn {
+     from {
+         opacity: 0;
+         transform: translateY(20px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }
+
+ .job-image-box {
+     position: relative;
+     overflow: hidden;
+     border-radius: 8px 8px 0 0;
+     height: 250px;
+ }
+
+ .job-image-box img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     border-radius: 8px 8px 0 0;
+ }
+
+ .job-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: rgba(0, 0, 0, 0.6);
+     opacity: 0;
+     transition: opacity 0.3s ease;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     color: #fff;
+     text-align: center;
+     padding: 10px;
+     border-radius: 8px 8px 0 0;
+ }
+
+ .job-image-box:hover .job-overlay {
+     opacity: 1;
+ }
+
+ .job-text {
+     text-align: left;
+     padding: 20px;
+     flex-grow: 1;
+     overflow: hidden;
+ }
+
+ .job-title {
+     font-size: 22px;
+     font-weight: 700;
+     color: #0056b3;
+     margin-bottom: 10px;
+ }
+
+ .job-title a {
+     text-decoration: none;
+     color: inherit;
+     transition: color 0.3s ease;
+ }
+
+ .job-title a:hover {
+     color: #003d80;
+ }
+
+ .job-details,
+ .responsabilities {
+     font-size: 14px;
+     color: #333;
+     margin-bottom: 10px;
+ }
+
+ .job-details i,
+ .responsabilities i {
+     color: #007bff;
+     margin-right: 8px;
+ }
+
+ .responsabilidades {
+     font-size: 14px;
+     color: #555;
+     margin-top: auto;
+     padding-top: 15px;
+     border-top: 1px solid #ddd;
+ }
+
+ /* Estilos para el paginador */
+ .pagination {
+     margin-top: 30px;
+     margin-bottom: 30px;
+ }
+
+ .page-link {
+     color: #004080;
+     border: 1px solid #dee2e6;
+     padding: 8px 16px;
+     margin: 0 4px;
+     border-radius: 4px;
+     transition: all 0.3s ease;
+ }
+
+ .page-link:hover {
+     background-color: #007bff;
+     color: white;
+     border-color: #007bff;
+     transform: translateY(-2px);
+     box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+ }
+
+ .page-item.active .page-link {
+     background-color: #004080;
+     border-color: #004080;
+     color: white;
+ }
+
+ .page-item.disabled .page-link {
+     color: #6c757d;
+     pointer-events: none;
+     background-color: #f8f9fa;
+     border-color: #dee2e6;
+ }
+
+ #Seccion-titulo {
+     padding: 50px 0;
+     background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+ }
+
+ .contact-inner {
+     background-color: #fff;
+     padding: 30px;
+     border-radius: 10px;
+     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+ }
+
+ /*titulo de ¡CONOCE LAS VACANTES DISPONIBLES QUE TENEMOS PARA TI!*/
+ .title-tag {
+     color: #004080;
+     font-weight: bold;
+     font-size: 30px;
+     text-transform: uppercase;
+     letter-spacing: 3px;
+ }
+
+ .h3 {
+     color: #007bff;
+     font-size: 32px;
+     font-weight: 700;
+     margin: 15px 0;
+ }
+
+ .alert {
+     background-color: #e7f3ff;
+     border: none;
+     border-radius: 8px;
+ }
+
+ #icono-contador {
+     color: #004080;
+ }
+
+ .badge {
+     background-color: #004080;
+     color: white;
+     padding: 8px 15px;
+     border-radius: 20px;
+ }
+@media (max-width: 600px) {
+     .job-card {
+         height: auto;
+     }
+
+     .job-image-box {
+         height: 200px;
+     }
+
+     #responsabilidades {
+         visibility: hidden;
+     }
+
+     .job-title{
+        font-size: 22px;
+     }
+     .title-tag{
+        font-size: 24px;
+        text-align: center;
+     }
+     .h3{
+        font-size: 22px;
+        text-align: center;
+     }
+
+}

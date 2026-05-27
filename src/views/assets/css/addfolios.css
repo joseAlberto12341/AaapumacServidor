@@ -1,0 +1,382 @@
+
+.modal-content {
+    animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes modalFadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95) translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .btn-close:hover {
+    opacity: 0.7 !important;
+    transform: scale(1.1) !important;
+  }
+
+  #folio_aduana:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none;
+  }
+
+  #loading-spinner {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .spinner-border {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  /* Animación para filas actualizadas */
+  @keyframes highlightRow {
+    0% { background-color: rgba(40, 167, 69, 0.3); }
+    100% { background-color: transparent; }
+  }
+
+  .highlight-update {
+    animation: highlightRow 2s ease;
+  }
+  
+  .loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    display: none;
+  }
+  
+  /* Animación para nuevas filas */
+  @keyframes fadeInRow {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  .new-row {
+    animation: fadeInRow 0.5s ease;
+  }
+  
+  /* Estilos para dropdowns dinámicos */
+  .dropdown-menu {
+    z-index: 1060;
+  }
+  
+  /* Estilo para botón deshabilitado */
+  .btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  /* Estilos para notificaciones */
+  .custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: none;
+    border-radius: 8px;
+  }
+/* Estilos para el dropdown de acciones */
+.dropdown .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown .btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.dropdown-toggle::after {
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.dropdown-menu {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 180px;
+}
+
+.dropdown-item {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+    color: #4a5568;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item:hover {
+    background-color: #f7fafc;
+    color: #2d3748;
+    transform: translateX(2px);
+}
+
+.dropdown-item i {
+    font-size: 16px;
+    width: 20px;
+}
+
+/* Estilos para los botones según estado */
+.btn-info {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+}
+
+.btn-info:hover {
+    background-color: #0ba8ca;
+    border-color: #0ba8ca;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #212529;
+}
+
+/* Ajustes para la tabla */
+#table-body td:first-child {
+    min-width: 120px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
+        max-width: 300px !important;
+    }
+    
+    #table-body td:first-child {
+        min-width: 100px;
+    }
+}
+/* Estilos para el dropdown de acciones */
+.dropdown .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.dropdown .btn-primary:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.dropdown-toggle::after {
+    vertical-align: middle;
+    margin-left: 4px;
+}
+
+.dropdown-menu {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 180px;
+}
+
+.dropdown-item {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+    color: #4a5568;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f7fafc;
+    color: #2d3748;
+}
+
+.dropdown-item i {
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+}
+
+/* Estilos para las opciones del dropdown */
+.text-success {
+    color: #198754 !important;
+}
+
+.text-success i {
+    color: #198754 !important;
+}
+
+.text-danger {
+    color: #dc3545 !important;
+}
+
+.text-danger i {
+    color: #dc3545 !important;
+}
+
+/* Estilos para los botones según estado */
+.btn-info {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+    color: white;
+}
+
+.btn-info:hover {
+    background-color: #0ba8ca;
+    border-color: #0ba8ca;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+    color: #212529;
+}
+
+/* Ajustes para la tabla */
+#table-body td:first-child {
+    min-width: 130px;
+}
+
+/* Estilos para los badges */
+.badge.bg-info {
+    background-color: #0dcaf0 !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        position: fixed !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: 90% !important;
+        max-width: 300px !important;
+    }
+    
+    #table-body td:first-child {
+        min-width: 110px;
+    }
+}
+
+/* Estilos para la paginación */
+.page-item.active .page-link {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.page-link {
+    color: #0056b3;
+}
+
+.page-link:hover {
+    color: #004494;
+}
+
+/* Estilos para las notificaciones */
+.custom-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 300px;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilos para la barra de búsqueda */
+#search-input {
+    border: 1px solid #ced4da;
+    border-right: none;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+#search-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
+    outline: none;
+}
+
+#clear-search-btn {
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-right: none;
+    background-color: #fff;
+}
+
+#search-btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Asegurar que los botones tengan la misma altura */
+.input-group > .form-control,
+.input-group > .btn {
+    height: 38px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .input-group {
+        flex-wrap: nowrap;
+    }
+    
+    #search-input {
+        font-size: 14px;
+    }
+}

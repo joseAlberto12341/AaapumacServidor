@@ -1,0 +1,72 @@
+Options All -Indexes
+
+RewriteEngine On
+RewriteBase /Aaapumac/
+
+# ==========================================
+# PROTECCIONES ANTI-DOS (COMPATIBLE WAMP)
+# ==========================================
+
+# 1. Limitar tamaño de petición a 2 MB (más compatible)
+<IfModule mod_reqtimeout.c>
+    RequestReadTimeout header=20-40,MinRate=500 body=20,MinRate=500
+</IfModule>
+
+# 2. Deshabilitar TRACE para evitar Cross-Site Tracing
+RewriteCond %{REQUEST_METHOD} ^TRACE
+RewriteRule .* - [R=405,L]
+
+# 3. Bloquear peticiones con User-Agent sospechoso (opcional)
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget|python|perl|ruby|php) [NC]
+RewriteRule .* - [F,L]
+
+# NOTA: LimitRequestBody no está disponible en tu módulo mod_fcgid
+# Por eso lo eliminamos. Usaremos protección desde PHP.
+
+# Resto de tus reglas
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Si la solicitud es para un archivo o directorio real, no reescribir
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Ruta raíz
+RewriteRule ^$ index.php?e=public&a=index [NC,QSA,L]
+
+# RUTAS ESPECÍFICAS DE LOGIN
+RewriteRule ^login/?$ index.php?e=login&a=index [NC,QSA,L]
+RewriteRule ^login/check/?$ index.php?e=login&a=check [NC,QSA,L]
+RewriteRule ^login/logout/?$ index.php?e=login&a=logout [NC,QSA,L]
+
+# RUTAS PARA ADMIN - BLOQUEAR/DESBLOQUEAR EMPLEOS
+RewriteRule ^admin/([0-9]+)/lock/?$ index.php?e=admin&a=lock&id=$1 [NC,QSA,L]
+RewriteRule ^admin/([0-9]+)/unlock/?$ index.php?e=admin&a=unlock&id=$1 [NC,QSA,L]
+
+# RUTA ESPECÍFICA PARA DETALLES DE EMPLEO
+RewriteRule ^public/([0-9]+)/job/?$ index.php?e=public&a=job&id=$1 [NC,QSA,L]
+
+# RUTAS PARA PUBLIC (deben ir antes de las reglas generales)
+RewriteRule ^jobs/?$ index.php?e=public&a=jobs [NC,QSA,L]
+RewriteRule ^conocenos/?$ index.php?e=public&a=conocenos [NC,QSA,L]
+RewriteRule ^politica/?$ index.php?e=public&a=politica [NC,QSA,L]
+RewriteRule ^capacitacion/?$ index.php?e=public&a=capacitacion [NC,QSA,L]
+RewriteRule ^contact/?$ index.php?e=public&a=contact [NC,QSA,L]
+RewriteRule ^report/?$ index.php?e=public&a=report [NC,QSA,L]
+RewriteRule ^terminos/?$ index.php?e=public&a=terminos [NC,QSA,L]
+RewriteRule ^aviso/?$ index.php?e=public&a=aviso [NC,QSA,L]
+RewriteRule ^depar/?$ index.php?e=public&a=depar [NC,QSA,L]
+RewriteRule ^datoaAd/?$ index.php?e=public&a=datoaAd [NC,QSA,L]
+
+# NUEVAS RUTAS PARA ASOCIADO
+RewriteRule ^asociado/generarPDF/?$ index.php?e=asociado&a=generarPDF [NC,QSA,L]
+
+# REGLAS GENERALES (deben ir al final)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z]+)/([a-zA-Z]+)/?$ index.php?e=$1&a=$2 [NC,QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([a-zA-Z]+)/?$ index.php?e=$1&a=index [NC,QSA,L]

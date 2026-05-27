@@ -1,0 +1,44 @@
+.breadcrumb-text{
+    text-align: center;
+}
+
+#titulo{
+    font-size: 7rem; 
+    color: rgb(255, 255, 255);
+}
+
+#subtitulo{
+    font-size:30px;  
+    color: #1a8dce; 
+    font-weight: bold;
+}
+@media(max-width: 500px) {
+    #titulo {
+        font-size: 45px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+    #subtitulo {
+        font-size: 18px;
+        color: #1a8dce;
+        font-weight: bold;
+        text-align: center;
+    }
+
+}
+@media(max-width: 800px) {
+    #titulo {
+        font-size: 60px;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+    }
+    #subtitulo {
+        font-size: 25px;
+        color: #1a8dce;
+        font-weight: bold;
+        text-align: center;
+    }
+
+}
