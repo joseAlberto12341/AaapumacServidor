@@ -358,7 +358,7 @@
 
                 <div class="row g-4">
 
-                    <!-- varios  fadalab -->
+                    <!-- varios  DENTASTICO -->
                     <div class="col-lg-3 col-md-6">
                         <div class="card h-100 border-0 shadow-sm hover-lift"
                             style="cursor: pointer; transition: transform 0.3s;" data-bs-toggle="modal"
@@ -372,8 +372,23 @@
                             </div>
                         </div>
                     </div>
+                                <!-- varios  FARMACIAS GP -->
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 border-0 shadow-sm hover-lift"
+                            style="cursor: pointer; transition: transform 0.3s;" data-bs-toggle="modal"
+                            data-bs-target="#modalFarmaciasGP">
+                            <div class="card-body text-center p-4">
+                                <img src="/Aaapumac/src/views/assets/img/convenios/GP.png" alt="FARMACIAS GP"
+                                    class="img-fluid mb-3 rounded" style="max-height: 150px; object-fit: contain;">
+
+                                <h5 class="card-title fw-bold text-info">FARMACIAS GP</h5>
+                                <p class="text-muted small mb-0">Diferentes beneficios</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+    
 
             <!-- ==================== MODALES ==================== -->
 
@@ -1577,6 +1592,31 @@
                                 <li>Cirugía 3er molar $10%</li>
                                 <li> Blanqueamiento $10%</li>
                                 <li> Cita de valoración y limpieza (niños) $600</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                            <!-- Modal el FARMACIAS GP -->
+            <div class="modal fade" id="modalFarmaciasGP" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title"><i class="mdi mdi-hotel me-2"></i>FARMACIAS GP</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img style="width:100px; height:100px;" src="/Aaapumac/src/views/assets/img/convenios/GP.png"
+                                class="img-fluid mb-3 rounded" alt="FARMACIAS GP">
+                            <h6 class="fw-bold">Beneficios:</h6>
+                            <ul>
+                                <li>10% de descuento en medicamento genérico </li>
+                                <li>5% de descuento en material de curación y hospitalario</li>
+                                <li>5% de descuento en medicamento de patente</li>
+                                <li>5% de descuento en productos de ortopedia y rehabilitación</li>
+                                <li>10% de descuento en análisis de laboratorio</li>
+                                <li>Consultas medicas generales en unidades GP a un precio de $150.00</li>
                             </ul>
                         </div>
                     </div>

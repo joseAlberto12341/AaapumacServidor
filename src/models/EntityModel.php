@@ -27,6 +27,8 @@ class EntityModel
         $server = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=' . DB_CHAR;
         $this->pdo = new PDO($server, DB_USER, DB_PASS);
         $this->pdo->setAttribute(PDO::ATTR_CASE, PDO::CASE_LOWER);
+        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $this->pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     }
 
     public function select($columns = '*', $filters = [], $onlyOne = false, $depth = NULL)

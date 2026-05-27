@@ -3,6 +3,28 @@ Options All -Indexes
 RewriteEngine On
 RewriteBase /Aaapumac/
 
+# ==========================================
+# PROTECCIONES ANTI-DOS (COMPATIBLE WAMP)
+# ==========================================
+
+# 1. Limitar tamaño de petición a 2 MB (más compatible)
+<IfModule mod_reqtimeout.c>
+    RequestReadTimeout header=20-40,MinRate=500 body=20,MinRate=500
+</IfModule>
+
+# 2. Deshabilitar TRACE para evitar Cross-Site Tracing
+RewriteCond %{REQUEST_METHOD} ^TRACE
+RewriteRule .* - [R=405,L]
+
+# 3. Bloquear peticiones con User-Agent sospechoso (opcional)
+RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+RewriteCond %{HTTP_USER_AGENT} ^(java|curl|wget|python|perl|ruby|php) [NC]
+RewriteRule .* - [F,L]
+
+# NOTA: LimitRequestBody no está disponible en tu módulo mod_fcgid
+# Por eso lo eliminamos. Usaremos protección desde PHP.
+
+# Resto de tus reglas
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
 # Si la solicitud es para un archivo o directorio real, no reescribir

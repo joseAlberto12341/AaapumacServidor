@@ -21,11 +21,49 @@ class PublicRepository
         );
     }
 
+    // NUEVO MÉTODO: Paginación manual con array_slice (funciona seguro)
+    public static function getJobsByPage(int $page = 1, int $limit = 6)
+    {
+        $job = new JobInfoModel();
+        
+        // Obtener TODOS los jobs activos
+        $allJobs = $job->select(
+            'j.*',
+            [
+                'where' => 'j.id_status = 1',
+                'order_by' => 'j.created_at DESC'
+            ],
+            false
+        );
+        
+        // Asegurar que es un array
+        if (!is_array($allJobs)) {
+            $allJobs = [];
+        }
+        
+        $totalRecords = count($allJobs);
+        $totalPages = $totalRecords > 0 ? ceil($totalRecords / $limit) : 1;
+        
+        // Calcular offset
+        $offset = ($page - 1) * $limit;
+        
+        // Paginación manual con array_slice
+        $jobs = array_slice($allJobs, $offset, $limit);
+        
+        return [
+            'jobs' => $jobs,
+            'total_pages' => $totalPages,
+            'total_records' => $totalRecords,
+            'current_page' => $page,
+            'limit' => $limit
+        ];
+    }
+
+    // Método original (lo dejamos pero no lo usamos por ahora)
     public static function getJobsPaginated(int $limit, int $offset)
     {
         $job = new JobInfoModel();
         
-        // Obtener todos los jobs activos primero para contar
         $allJobs = $job->select(
             'j.*',
             [
@@ -37,7 +75,6 @@ class PublicRepository
         $totalRecords = is_array($allJobs) ? count($allJobs) : 0;
         $totalPages = $totalRecords > 0 ? ceil($totalRecords / $limit) : 1;
         
-        // Obtener jobs paginados
         $jobs = $job->select(
             'j.*',
             [
@@ -49,11 +86,13 @@ class PublicRepository
             false
         );
         
+        $currentPage = ($offset / $limit) + 1;
+        
         return [
             'jobs' => $jobs ?: [],
             'total_pages' => $totalPages,
             'total_records' => $totalRecords,
-            'current_page' => floor($offset / $limit) + 1,
+            'current_page' => $currentPage,
             'limit' => $limit
         ];
     }
@@ -99,12 +138,6 @@ class PublicRepository
         );
     }
 
-    public static function getJobsByPage(int $page = 1, int $limit = 6)
-    {
-        $offset = ($page - 1) * $limit;
-        return self::getJobsPaginated($limit, $offset);
-    }
-
     public static function getUsers()
     {
         $user = new UserModel();
@@ -115,4 +148,4 @@ class PublicRepository
         );
     }
     
-}
+}   

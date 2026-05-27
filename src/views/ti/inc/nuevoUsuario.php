@@ -79,7 +79,7 @@ if (isset($_GET['error'])) {
                                             <option value="6" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 6) ? 'selected' : ''; ?>>Navieras y recintos</option>
                                             <option value="7" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 7) ? 'selected' : ''; ?>>Jurídico</option>
                                             <option value="8" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 8) ? 'selected' : ''; ?>>Calidad</option>
-                                            <option value="9" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 9) ? 'selected' : ''; ?>>Asociado</option>
+                                            <option value="9" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 9) ? 'selected' : ''; ?>>Asociado operativo</option>
                                             <option value="10" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 10) ? 'selected' : ''; ?>>Asociado coordinador</option>
                                             <option value="11" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 11) ? 'selected' : ''; ?>>Gestiones</option>
                                             <option value="12" <?php echo (isset($_POST['id_rol']) && $_POST['id_rol'] == 12) ? 'selected' : ''; ?>>Asociado común</option>

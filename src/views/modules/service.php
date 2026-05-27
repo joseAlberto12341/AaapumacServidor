@@ -46,24 +46,6 @@
                     <h3><a href="#administrativo" onclick="mostrarSeccion('administrativo')">Administrativo</a></h3>
                 </div>
             </div>
-            <!-- Servicio: Calidad -->
-            <div class="col-lg-3 col-sm-6 col-10  wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="700ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#calidad" onclick="mostrarSeccion('calidad')"><i class="mdi mdi-certificate"></i></a>
-                    </div>
-                    <h3><a href="#calidad" onclick="mostrarSeccion('calidad')">Calidad</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: Dirección -->
-            <div class="col-lg-3 col-sm-6 col-10  wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="800ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#direccion" onclick="mostrarSeccion('direccion')"><i class="mdi mdi-crown"></i></a>
-                    </div>
-                    <h3><a href="#direccion" onclick="mostrarSeccion('direccion')">Dirección</a></h3>
-                </div>
-            </div>
             <!-- Servicio: Call Center -->
             <div class="col-lg-3 col-sm-6 col-10 wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="900ms">
                 <div class="service-box-two">
@@ -71,51 +53,6 @@
                         <a href="#call" onclick="mostrarSeccion('call')"><i class="mdi mdi-phone"></i></a>
                     </div>
                     <h3><a href="#call" onclick="mostrarSeccion('call')">Call Center</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: Navieras -->
-            <div class="col-lg-3 col-sm-6 col-10  wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="1000ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#navieras" onclick="mostrarSeccion('navieras')"><i class="mdi mdi-ferry"></i></a>
-                    </div>
-                    <h3><a href="#navieras" onclick="mostrarSeccion('navieras')">Navieras</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: SKYWAAATCH -->
-            <div class="col-lg-3 col-sm-6 col-10 wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="1100ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#sky" onclick="mostrarSeccion('sky')"><i class="mdi mdi-map-marker-radius"></i></a>
-                    </div>
-                    <h3><a href="#sky" onclick="mostrarSeccion('sky')">SKYWAAATCH</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: UniAAAPUMAC -->
-            <div class="col-lg-3 col-sm-6 col-10 wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="1200ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#uni" onclick="mostrarSeccion('uni')"><i class="mdi mdi-school"></i></a>
-                    </div>
-                    <h3><a href="#uni" onclick="mostrarSeccion('uni')">UniAAAPUMAC</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: Sistemas -->
-            <div class="col-lg-3 col-sm-6 col-10 wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="1300ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#sistemas" onclick="mostrarSeccion('sistemas')"> <i class="mdi mdi-lan"></i></a>
-                    </div>
-                    <h3><a href="#sistemas" onclick="mostrarSeccion('sistemas')">Sistemas</a></h3>
-                </div>
-            </div>
-            <!-- Servicio: Servicios Online -->
-            <div class="col-lg-3 col-sm-6 col-10 wow fadeInUp" data-wow-duration="2000ms" data-wow-delay="1400ms">
-                <div class="service-box-two">
-                    <div class="icon">
-                        <a href="#online" onclick="mostrarSeccion('online')"> <i class="mdi mdi-cloud-print"></i></a>
-                    </div>
-                    <h3><a href="#online" onclick="mostrarSeccion('online')">Servicios Online</a></h3>
                 </div>
             </div>
         </div>
@@ -252,67 +189,48 @@
                         <h2 class="title" style="color: #333; font-weight: bold;">Operativo</h2>
                     </div>
                     <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Tenemos expertos en operación aduanera
+                        Brindar asesoría y gestión a nuestros Asociados con la Comunidad Portuaria en materia de Comercio Exterior, creando procedimientos y acuerdos que permitan agilizar el despacho de la mercancía por este Puerto de Manzanillo, proporcionando los siguientes servicios:
                     </p>
                     <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Consultas operativas
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Atender consultas operativas
+                            de nuestros Asociados
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Pedimentos en
-                            consulta-operativo
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solventar consultas a los Asociados cuando se presentan en las plataformas de Primer Reconocimiento
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Pedimentos, estatus y
-                            requisiciones
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Asistencia al Asociado en reuniones Operativas con la Aduana de Manzanillo
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Revision documental
-                            PROFEPA
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Apoyo en aperturas de contenedores por Multidependientes AAAPUMAC en Plataformas de Primer Reconocimiento en San Pedrito, Zona Norte y Recintos Fiscalizados para operaciones de importación y exportación
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Solventar consultas a
-                            los asociados
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Notificaciones de Reconocimientos Aduaneros en Recintos Fiscalizados y Recintos Fiscalizados Estratégicos (RFE) vía telefónica
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Apoyo en aperturas de
-                            contenedores por Multidependientes AAAPUMAC
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Apoyo y coordinación con la Agencia Aduanal para la revisión y liberación de pedimentos M3 en las plataformas de San Pedrito y Zona Norte
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Notificaciones de
-                            Reconocimientos Aduaneros en Recintos Fiscalizados y Recintos Fiscalizados Estratégicos
-                            (RFE)
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Recepción de pedimentos para modulación de Exportación, Tránsitos e Importación por Ferrocarril, RFE, ubicado en el edificio de Gestiones Portuarias
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Firma de actas
-                            simples como testigos presenciales
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Sistema de trazabilidad de pedimentos de importación por ferrocarril, exportación, Recinto Fiscalizado Estratégico (RFE), en el módulo de gestiones portuarias
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Notificación y
-                            seguimiento de mercancías que se encuentran en estatus de Investigación General, OVMT y
-                            muestreo
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Apoyo, coordinación y
-                            liberación con Agencia Aduanal de pedimentos M3
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Notificación de
-                            incidencias en Reconocimiento Aduanero en San Pedrito, Zona Norte y Recintos Fiscalizados
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Asistencia en la intervención de Multidependiente en PROFEPA para tratar temas relacionados con la mejora en procesos del despacho aduanero a través del Ticket de Servicio
                         </li>
                     </ul>
-                 <!--    <div style="text-align: center;">
+                    <!--    <div style="text-align: center;">
                         <a href="#" class="btn"
                             style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
                             onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
@@ -352,61 +270,68 @@
                         <h2 class="title" style="color: #333; font-weight: bold;">Jurídico</h2>
                     </div>
                     <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Asesoría legal
+                        El objetivo es satisfacer en tiempo y forma los requerimientos que surjan en materia de Comercio Exterior a nuestros Asociados, a través de servicios de asesoría, gestión y difusión de la normatividad vigente.
                     </p>
                     <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Reportes a mesa de
-                            ayuda
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de Ingreso a los convenios para la no presentación de garantías ante Navieras.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Reportes a mesa de
-                            ayuda
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de justificaciones ante la Aduana.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Liberaciones de
-                            prevalidador
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de liberaciones del prevalidador de la CAAAREM.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Inmovilizaciones por
-                            autoridades coordinadas
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de Reportes de Mesa de Ayuda a través de la CAAAREM.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Seguimiento a
-                            incidencias simples y PAMAS
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Revisión de Formulario Múltiple de Pago de Comercio Exterior mediante línea de captura.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Citas con el área
-                            legal de aduana
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Presencia de Multidependiente Jurídico en plataforma de San Pedrito y Gestiones Portuarias.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Trámites de abandonos
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de elaboración de escritos de pruebas y alegatos derivados de Procedimientos Administrativos.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Consultas jurídicas
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Solicitud de elaboración de Recursos de Revocación.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Revisión de
-                            formulario múltiple de pago
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimiento a notificaciones de Actas de Inicio de PAMA's, retenciones o incidencias simples.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Revisión de K1 y A3
-                            para modulación
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimientos a notificaciones de oficios de liberacion de mercancias derivado de Procedimientos Administrativos iniciados por la Autoridad Aduanera.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Seguimiento a
-                            notificación de oficios de liberación
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimiento en el trámite de revisión de operaciones bajo la clave de pedimento "A3".
+                        </li>
+                        <li style="margin-bottom: 10px; font-size: 1rem;">
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimiento de inmovilización de contenedores por Autoridades Coordinadas.
+                        </li>
+                        <li style="margin-bottom: 10px; font-size: 1rem;">
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimiento a Abandono de Mercancías.
+                        </li>
+                        <li style="margin-bottom: 10px; font-size: 1rem;">
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Seguimiento para la revisión de incidencias de incumplimiento de etiquetado.
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Solicitud de citas con el área de Asuntos Legales de la Aduana y usuarios.
                         </li>
                     </ul>
                     <!-- <div style="text-align: center;">
@@ -448,53 +373,40 @@
                         <h2 class="title" style="color: #333; font-weight: bold;">Arancelario</h2>
                     </div>
                     <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Siempre actualizados en materia normativa
+                        Nuestro objetivo es proporcionar a todos los Asociados de manera simple y precisa la Clasificación Arancelaria de las mercancías y hacer de conocimiento los criterios y/o lineamientos que la autoridad aduanera determine en materia Arancelaria:
                     </p>
                     <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Asesoría de
-                            clasificación
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Atención y seguimiento oportuno en asesoría de clasificación arancelaria a consultas realizadas por Ticket de Servicio.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Clasificación
-                            arancelaria en reconocimiento previo
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Atender y asesorar a los Asociados de manera personalizada
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Clasificación
-                            arancelaria con muestra física
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Asistencia en plataforma San Pedrito y Zona Norte para dar seguimiento oportuno con la Autoridad Aduanera derivado de alguna irregularidad en la clasificación arancelaria.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Clasificación
-                            arancelaria sin muestra física
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Ofrecer base de datos a través del portal web para la consulta de mercancías en general.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Juntas técnicas de
-                            irregularidad
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Desarrollar Análisis mercancias en controversia.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Juntas técnicas
-                            previas
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Asesoría y gestion con la Autoridad Aduanera en solicitudes de Juntas Tecnicas Previas y de Irregularidad conforme la RGCE 3.7.7.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Entregas de muestras
-                            y/u oficios
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Ofrecer capacitaciones mensuales a los clasificadores via Teams.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Gestión realizada
-                            ante el verificador de la aduana
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Capacitación
-                            arancelaria en oficina de la agencia aduanal
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Entrega de muestras correctas y oficios.
                         </li>
                     </ul>
                     <!-- <div style="text-align: center;">
@@ -539,162 +451,25 @@
                         <h2 class="title" style="color: #333; font-weight: bold;">Administrativo</h2>
                     </div>
                     <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Administrativo Sed unde omnis iste natus error sit voluptat em accusantium doloremque
-                        laudantium, totam raperiaeaque ipsa quae ab illo inventore veritatis et quasi
+                    El objetivo es brindar servicios de valor agregado que ayuden a nuestros asociados a mejorar sus procesos administrativos y proporcionen a sus colaboradores y familiares beneficios únicos mediante los convenios realizados entre la Asociación y proveedores de servicios e instituciones.
                     </p>
                     <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Arrendamiento
-                            Auditorio Benito Guerrero
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Administración del Auditorio “Benito Guerrero Herrera” para talleres, reuniones de trabajo, capacitaciones y conferencias.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Best Services
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Concertación de convenios con Universidades, Proveedores y/o Prestadores de Servicios para colaboradores de Agencias Aduanales asociados.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Bolsa de Trabajo
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Convenios
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Servicio de captación de C.V.  para bolsa         de trabajo.
                         </li>
                     </ul>
                     <!-- <div style="text-align: center;">
                         <a href="#" class="btn"
                             style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: calidad -->
-<section id="calidad" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información-->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="wcu-video wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/cali.jpg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/2.png);">
-                        <!-- <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Calidad</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Servicios que ofrece el área de calidad
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Atención a consultas
-                            internas
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Seguimiento a tickets
-                            negativos
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Atención a
-                            felicitaciones, quejas y sugerencias
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Seguimiento a
-                            acciones de mejora
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Gestión del sistema
-                            integrado de calidad y antisoborno
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: direccion -->
-<section id="direccion" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información -->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="wcu-video wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/direc.jpg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/5.png);">
-                        <!--  <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Dirección</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Servicios que ofrece Dirección General
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Best Services
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Professional Advisor
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Responsive Design
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Awesome Pricing
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Online Support
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center; line-height: 1.5;"
                             onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
                             onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
                             <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
@@ -731,344 +506,41 @@
                         <h2 class="title" style="color: #333; font-weight: bold;">Callcenter</h2>
                     </div>
                     <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Servicios que ofrece Callcenter
+                        El objetivo es atender las solicitudes de apoyo y consultas de los Asociados, fungiendo como intermediario ante los diferentes Actores Portuarios en el seguimiento y la gestión a sus requerimientos, así como la reasignación de ticket de servicios derivadas de las consultas operativas, jurídicas y de clasificación arancelarias que sean solicitados por los Asociados. Otorgando los siguientes servicios
                     </p>
                     <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Juntas operativas
-                            (Ponencias)
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Emisión de boletines, comunicados y circulares.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Circulares
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Gestión para Constancias Temporal de Importación (DGA)
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Consultas Call Center
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Atención y seguimiento oportuno de las solicitudes de apoyo a las consultas de los Asociados a través del Ticket de Servicio.
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Aduana – SEMAR –
-                            COFEPRIS
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Brindar asesoría a los Asociados inherentes a las operaciones de Comercio Exterior
                         </li>
                         <li style="margin-bottom: 10px; font-size: 1rem;">
                             <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Notificaciones SEDENA
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Recepción y seguimiento a solicitudes de programación de Revisión Aduana-SEMAR mediante Ticket de Servicio.
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Coordinación y seguimiento a solicitudes de programación de Revisión de COFEPRIS, Aduana- SEMAR.
+                        </li>
+                        <li>
+                            <i class="far fa-check-circle"
+                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i>Notificación de programación para revisión con SEDENA
                         </li>
                     </ul>
                     <!-- <div style="text-align: center;">
                         <a href="#" class="btn"
                             style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center; line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: navieras -->
-<section id="navieras" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información -->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="wcu-video wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/navi.jpg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/04.png);">
-                        <!-- <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Navieras</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Servicios que ofrece Navieras
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Recintos Fiscalizados
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Navieras
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Patios Externos
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Professional Advisor
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center; line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: skywaaatch -->
-<section id="sky" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información-->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="wcu-video wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/sky.jpg);">
-                    </div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/8.png);">
-                       <!--  <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Skywaaatch</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Esquema único de visibilidad, certeza y reacción inmediata ante emergencias.<br>
-                        Recibe notificaciones estratégicas y protege tus operaciones a través de protocolos de acción y
-                        recuperación altamente desarrollados respaldados por las autoridades.
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Solicitud de GPS
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Custodia Fiscal
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: uniaaapumac -->
-<section id="uni" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información-->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10">
-                <div class="wcu-video wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/univa.jpg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/4.png);">
-                       <!--  <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">UNIAAAPUMAC</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Nuestra visión es coadyuvar con los Agentes Aduanales agremiados en la profesionalización de los
-                        Recursos Humanos que se desenvuelven en el Ámbito Aduanal y de Comercio Exterior.
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Capacitación
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Cursos y eventos
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Licenciatura en
-                            comercio exterior, logística y aduanas
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Licenciatura en
-                            mercadotecnia y clasificación arancelaria
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Técnico superior
-                            universitario en comercio exterior y aduanas
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Maestría en alta
-                            dirección y operación logística
-                        </li>
-                        <li style="margin-bottom: 10px; color: #333; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Maestría en derecho
-                            fiscal
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: sistemas -->
-<section id="sistemas" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información -->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                <div class="wcu-video">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/sistemas.jpeg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/07.png);">
-                        <!-- <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Sistemas</h2>
-                    </div>
-                    <p>
-                        Servicios que ofrece el área de Sistemas
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Soporte Interno
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Acceso a servicios
-                            AAAPUMAC
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Asesorías en temas
-                            informáticos
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
-                            onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
-                            onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
-                            <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
-                        </a>
-                    </div> -->
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-</section>
-
-<!-- Sección de Información: servicios -->
-<section id="online" class="wcu-section section-gap" style="display: none;">
-    <div class="container">
-        <!-- Contenido de la sección de información -->
-        <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="400ms">
-                <div class="wcu-video">
-                    <div class="video-poster-one bg-img-c"
-                        style="background-image: url(src/views/assets/img/servicios/online.jpg);"></div>
-                    <div class="video-poster-two bg-img-c"
-                        style="background-image: url(src/views/assets/img/valores/1.png);">
-                        <!-- <a href="https://www.youtube.com/watch?v=fEErySYqItI" class="popup-video">
-                            <i class="fas fa-play"></i>
-                        </a> -->
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-10 wow flipInX" data-wow-duration="1500ms" data-wow-delay="600ms">
-                <div class="wcu-text-two">
-                    <div class="section-title left-border mb-40"
-                        style="border-left: 5px solid #007bff; padding-left: 15px;">
-                        <h2 class="title" style="color: #333; font-weight: bold;">Servicios Online</h2>
-                    </div>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.6;">
-                        Servicios en línea
-                    </p>
-                    <ul class="wcu-list clearfix" style="list-style: none; padding: 0; margin: 20px 0;">
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Envío de ticket
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> AAAPUMAC Web
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Trazabilidad en
-                            gestiones
-                        </li>
-                        <li style="margin-bottom: 10px; font-size: 1rem;">
-                            <i class="far fa-check-circle"
-                                style="color: #007bff; margin-right: 8px; font-size: 1.5rem;"></i> Descargo DGA's
-                        </li>
-                    </ul>
-                    <!-- <div style="text-align: center;">
-                        <a href="#" class="btn"
-                            style="background-color: #007bff; color: #fff; padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: bold; border: 2px solid #007bff; transition: background-color 0.3s, color 0.3s, border-color 0.3s; display: inline-flex; align-items: center; justify-content: center;line-height: 1.5;"
                             onmouseover="this.style.backgroundColor='#0056b3'; this.style.borderColor='#0056b3';"
                             onmouseout="this.style.backgroundColor='#007bff'; this.style.borderColor='#007bff';">
                             <i class="fa fa-arrow-right" style="margin-right: 8px;"></i> Ver Más
@@ -1084,7 +556,7 @@
 <script>
     /* Manejar el clic en los enlaces de servicio */
     document.querySelectorAll('.service-link').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
 
             const target = this.getAttribute('href');

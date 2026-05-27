@@ -3,8 +3,7 @@
 <!-- Minimal Header -->
 <div class="minimal-header">
     <div class="header-content">
-        <span class="header-badge">Bienvenido <?php echo $_SESSION['username']; ?> 
-            <span class="role-badge">(<?php echo isset($_SESSION['role_name']) ? ucfirst($_SESSION['role_name']) : 'Usuario'; ?>)</span>
+        <span class="header-badge">Bienvenido/a <?php echo $_SESSION['username']; ?> 
         </span>
         <h2 class="header-title">Asociación de Agentes Aduanales</h2>
         <p class="header-text">Puerto de Manzanillo</p>

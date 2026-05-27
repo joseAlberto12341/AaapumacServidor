@@ -129,9 +129,9 @@
                 </ul>
             </div>
             <div class="col-lg-6 text-center wow slideInRight" style="animation-duration: 1.5s;">
-                <img src="/Aaapumac/src/views/assets/img/illustration/04.jpg" alt="Innovación y Calidad"
+                <!-- <img src="/Aaapumac/src/views/assets/img/illustration/04.jpg" alt="Innovación y Calidad"
                     style="max-width: 140%; border-radius: 6px; box-shadow: 0 20px 50px rgba(0, 86, 179, 0.3); transform: scale(0.95); transition: transform 0.3s ease;">
-            </div>
+            </div> -->
         </div>
     </div>
 </section>

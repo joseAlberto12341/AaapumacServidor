@@ -30,7 +30,7 @@
         <ul class="nav-menu">
             <!-- Inicio -->
             <li class="nav-item">
-                <a class="nav-link" href="/Aaapumac/callcenter/profile">
+                <a class="nav-link" href="/Aaapumac/ti/profile">
                     <div class="nav-icon">
                         <i class="mdi mdi-view-dashboard"></i>
                     </div>
@@ -38,10 +38,6 @@
                 </a>
             </li>
 
-            <!-- Separador -->
-            <li class="nav-category">
-                <span class="category-title">Departamentos</span>
-            </li>
 
             <!-- TI -->
             <li class="nav-category">

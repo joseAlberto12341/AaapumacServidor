@@ -17,7 +17,7 @@
               nuevo</span>
             <form action="/Aaapumac/login/check" method="POST" class="pt-3" style="padding-top: 1rem; text-align: left;">
               <div class="form-group">
-                <label for="exampleInputEmail">Usuario</label>
+                <label for="exampleInputEmail">Usuario/correo</label>
                 <div class="input-group">
                   <div class="input-group-prepend bg-transparent">
                     <span class="input-group-text bg-transparent border-right-0" style="border-right: 0;">
@@ -25,7 +25,7 @@
                     </span>
                   </div>
                   <input type="text" name="email" class="form-control form-control-lg border-left-0"
-                    id="exampleInputEmail" placeholder="Introduce tu nombre de usuario" style="border-left: 0;">
+                    id="exampleInputEmail" placeholder="Introduce tu nombre de usuario o correo electrónico registrado" style="border-left: 0;">
                 </div>
               </div>
               <div class="form-group">
@@ -69,13 +69,15 @@
                   </div>
                 </div>
               </div>
-              <!-- Mostrar mensaje de error si hay alguno en la sesión -->
-              <?php if (isset($_SESSION['message'])): ?>
+
+              <!-- Mostrar mensaje de error -->
+              <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])): ?>
                 <div class="alert alert-danger" role="alert">
-                  <?= $_SESSION['message'] ?>
+                  <?= htmlspecialchars($_SESSION['message'], ENT_QUOTES, 'UTF-8') ?>
                 </div>
                 <?php unset($_SESSION['message']); ?>
               <?php endif; ?>
+
               <div class="my-3" style="margin: 1rem 0;">
                 <button type="submit" name="login_btn"
                   class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"

@@ -11,7 +11,7 @@ $allModals = isset($answer['modal']) && is_array($answer['modal']) ? $answer['mo
 $filteredModals = array_values(array_filter($allModals, function ($item) use ($filterStart, $filterEnd) {
   // Obtener la fecha de creación
   $createdAtRaw = method_exists($item, 'getCreatedAt') ? $item->getCreatedAt() : null;
-  
+
   if (!$createdAtRaw) {
     return false;
   }
@@ -62,15 +62,16 @@ $endIndex = min($startIndex + $itemsPerPage, $totalItems);
 // Construir la URL base para el paginador MANTENIENDO los filtros
 $queryBase = [];
 if ($filterStart !== '') {
-    $queryBase['start_date'] = $filterStart;
+  $queryBase['start_date'] = $filterStart;
 }
 if ($filterEnd !== '') {
-    $queryBase['end_date'] = $filterEnd;
+  $queryBase['end_date'] = $filterEnd;
 }
 ?>
 
 <link rel="stylesheet" href="/Aaapumac/src/views/assets/css/aviso.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <div class="card card-rounded">
   <div class="card-body">
@@ -80,50 +81,48 @@ if ($filterEnd !== '') {
         <h4 class="card-title card-title-dash" id="titulo-principal">Listado de
           <?php echo $answer['data']['title']; ?>
         </h4>
-        <p class="card-subtitle card-subtitle-dash" id="subtitulo">
-          <?php echo $answer['data']['subtitle']; ?>
-        </p>
+
       </div>
     </div>
     <br>
 
-<!-- Barra de filtrado minimalista -->
-<div class="filter-bar">
-  <form method="GET" class="filter-form">
-    <input type="hidden" name="page" value="1">
-    
-    <div class="filter-group">
-      <div class="filter-field">
-        <label for="start_date" class="filter-label">Desde</label>
-        <input type="date" id="start_date" name="start_date" class="filter-input"
-          value="<?php echo htmlspecialchars($filterStart); ?>">
-      </div>
+    <!-- Barra de filtrado minimalista -->
+    <div class="filter-bar">
+      <form method="GET" class="filter-form">
+        <input type="hidden" name="page" value="1">
 
-      <div class="filter-separator">—</div>
+        <div class="filter-group">
+          <div class="filter-field">
+            <label for="start_date" class="filter-label">Desde</label>
+            <input type="date" id="start_date" name="start_date" class="filter-input"
+              value="<?php echo htmlspecialchars($filterStart); ?>">
+          </div>
 
-      <div class="filter-field">
-        <label for="end_date" class="filter-label">Hasta</label>
-        <input type="date" id="end_date" name="end_date" class="filter-input"
-          value="<?php echo htmlspecialchars($filterEnd); ?>">
-      </div>
+          <div class="filter-separator">—</div>
 
-      <div class="filter-actions">
-        <button type="submit" class="filter-btn filter-btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z"/>
-          </svg>
-          Filtrar
-        </button>
-        <a href="<?php echo strtok($_SERVER['REQUEST_URI'], '?'); ?>" class="filter-btn filter-btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 6L6 18M6 6L18 18"/>
-          </svg>
-          Limpiar
-        </a>
-      </div>
+          <div class="filter-field">
+            <label for="end_date" class="filter-label">Hasta</label>
+            <input type="date" id="end_date" name="end_date" class="filter-input"
+              value="<?php echo htmlspecialchars($filterEnd); ?>">
+          </div>
+
+          <div class="filter-actions">
+            <button type="submit" class="filter-btn filter-btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" />
+              </svg>
+              Filtrar
+            </button>
+            <a href="<?php echo strtok($_SERVER['REQUEST_URI'], '?'); ?>" class="filter-btn filter-btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 6L6 18M6 6L18 18" />
+              </svg>
+              Limpiar
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
-  </form>
-</div>
     <!-- Contenedor de cartas -->
     <div id="cardsContainer" class="row">
       <?php if ($totalItems === 0): ?>
@@ -159,19 +158,6 @@ if ($filterEnd !== '') {
                 </div>
               <?php endif; ?>
 
-              <!-- Badge de estado -->
-              <span class="position-absolute top-0 end-0 m-2">
-                <?php
-                switch ($m->getVisible()) {
-                  case 0:
-                    echo '<span class="badge bg-danger">Inactivo</span>';
-                    break;
-                  case 1:
-                    echo '<span class="badge bg-success">Activo</span>';
-                    break;
-                }
-                ?>
-              </span>
             </div>
 
             <!-- Cuerpo de la carta -->
@@ -192,21 +178,32 @@ if ($filterEnd !== '') {
                   <?php echo $m->getCreatedAt() ? date('d/m/Y H:i', strtotime($m->getCreatedAt())) : 'N/A'; ?>
                 </small>
               </div>
-              
-              <!-- Ver archivo y descargar -->
+
+              <!-- Ver archivo y descargar (soporta múltiples PDFs) -->
               <div class="class-file mt-3 d-flex align-items-center flex-wrap gap-3">
-                <?php if ($m->getArchivo()): ?>
-                  <a href="<?php echo $m->getArchivo(); ?>" target="_blank"
-                    class="d-inline-flex align-items-center text-primary text-decoration-none fw-semibold">
-                    <i class="fas fa-file-pdf me-1"></i> Ver Archivo
-                  </a>
-                  <a href="<?php echo $m->getArchivo(); ?>" download
-                    class="btn btn-sm d-inline-flex align-items-center text-primary">
-                    <i class="fas fa-download me-1 text-primary"></i> Descargar PDF
-                  </a>
+                <?php
+                // Obtener array de archivos (el método ya maneja JSON o string único)
+                $archivos = method_exists($m, 'getArchivosArray') ? $m->getArchivosArray() : [];
+                if (!empty($archivos)):
+                  $total = count($archivos);
+                ?>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-file-pdf"></i> <?= $total ?> archivo<?= $total > 1 ? 's' : '' ?>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <?php foreach ($archivos as $ruta): ?>
+                        <li>
+                          <a class="dropdown-item" href="<?= htmlspecialchars($ruta) ?>" download>
+                            <i class="fas fa-download me-2"></i> <?= htmlspecialchars(basename($ruta)) ?>
+                          </a>
+                        </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
                 <?php else: ?>
                   <small class="text-muted d-inline-flex align-items-center">
-                    <i class="fas fa-ban me-1"></i> No hay archivo disponible
+                    <i class="fas fa-ban me-1"></i> No hay archivos disponibles
                   </small>
                 <?php endif; ?>
               </div>
@@ -242,7 +239,7 @@ if ($filterEnd !== '') {
           $endPage = min($totalPages, $currentPage + 2);
 
           for ($page = $startPage; $page <= $endPage; $page++):
-            ?>
+          ?>
             <li class="page-item <?php echo $page == $currentPage ? 'active' : ''; ?>">
               <a class="page-link" href="?<?php echo http_build_query(array_merge($queryBase, ['page' => $page])); ?>">
                 <?php echo $page; ?>

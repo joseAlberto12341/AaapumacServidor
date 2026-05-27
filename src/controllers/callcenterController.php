@@ -110,13 +110,24 @@ class callcenterController
         ];
     }
 
-   public static function NewAviso()
+public static function NewAviso()
 {
     \Utils\AuthHelper::requireAuth(5);
     
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-        // Procesar la imagen (igual que antes)
+        // Detectar si POST fue rechazado por exceder post_max_size
+        if (empty($_POST) && empty($_FILES) && !empty($_SERVER['CONTENT_LENGTH'])) {
+            $postMaxSize = ini_get('post_max_size');
+            $uploadMaxFilesize = ini_get('upload_max_filesize');
+            $_SESSION['error'] = "El tamaño total de la solicitud excede el límite del servidor. " .
+                                "post_max_size=$postMaxSize, upload_max_filesize=$uploadMaxFilesize. " .
+                                "Intente con archivos más pequeños o contacte al administrador.";
+            header('Location: /Aaapumac/callcenter/modals');
+            exit();
+        }
+        
+        // ---------- PROCESAR IMAGEN (obligatoria, igual que antes) ----------
         $imagePath = '';
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/img/modal/';
@@ -159,295 +170,303 @@ class callcenterController
             exit();
         }
 
-        // Procesar el archivo PDF/Documento
-        $filePath = '';
-        if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
+        // ---------- PROCESAR MÚLTIPLES ARCHIVOS PDF ----------
+        $archivosPaths = [];
+        if (isset($_FILES['archivos']) && !empty($_FILES['archivos']['name'][0])) {
             $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/files/';
-
             if (!is_dir($uploadDir)) {
                 mkdir($uploadDir, 0755, true);
             }
 
-            // ========== VALIDACIÓN MUY FLEXIBLE ==========
-            $tempFile = $_FILES['archivo']['tmp_name'];
-            $isValid = false;
-            $detectedType = "Desconocido";
-            $realMime = null;
-            $fileContent = null;
+            $totalFiles = count($_FILES['archivos']['name']);
+            $maxSize = 10 * 1024 * 1024; // 10 MB por archivo
 
-            // 1. Validar tamaño máximo (10MB)
-            $maxSize = 10 * 1024 * 1024;
-            if ($_FILES['archivo']['size'] > $maxSize) {
-                $_SESSION['error'] = "El archivo no debe exceder los 10MB";
-                header('Location: /Aaapumac/callcenter/modals');
-                exit();
-            }
-
-            // 2. Verificar que el archivo temporal existe
-            if (!file_exists($tempFile) || !is_readable($tempFile)) {
-                $_SESSION['error'] = "Error al leer el archivo temporal";
-                header('Location: /Aaapumac/callcenter/modals');
-                exit();
-            }
-
-            // 3. Leer los primeros bytes para análisis
-            $handle = fopen($tempFile, 'rb');
-            $firstBytes = fread($handle, 1024);
-            fclose($handle);
-            
-            // Verificar firma PDF estándar
-            if (substr($firstBytes, 0, 5) === '%PDF-') {
-                $isValid = true;
-                $detectedType = "PDF estándar (firma %PDF-)";
-            }
-            // Verificar si es PDF pero con contenido de texto (como el tuyo)
-            elseif (strpos($firstBytes, '%PDF') !== false || 
-                    strpos($firstBytes, 'PDF') !== false ||
-                    strpos($firstBytes, '===== Page') !== false) {
-                $isValid = true;
-                $detectedType = "PDF en formato texto detectado";
-            }
-            // Verificar si es Word
-            elseif (substr($firstBytes, 0, 2) === 'PK') {
-                $isValid = true;
-                $detectedType = "Word (.docx) - formato ZIP";
-            }
-            elseif (substr($firstBytes, 0, 8) === "\xD0\xCF\x11\xE0\xA1\xB1\x1A\xE1") {
-                $isValid = true;
-                $detectedType = "Word (.doc) - formato OLE";
-            }
-            
-            // 4. Verificar con finfo (MIME real)
-            if (function_exists('finfo_open')) {
-                $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                $realMime = finfo_file($finfo, $tempFile);
-                
-                // Lista ampliada de MIME aceptados
-                $allowedMimes = [
-                    'application/pdf',
-                    'application/x-pdf',
-                    'application/octet-stream',
-                    'text/plain',        // Importante para tu archivo
-                    'text/html',
-                    'application/vnd.adobe.pdf',
-                    'application/acrobat',
-                    'application/msword',
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-                    'application/zip'
-                ];
-                
-                if (in_array($realMime, $allowedMimes)) {
-                    $isValid = true;
-                    $detectedType = "MIME: $realMime";
+            for ($i = 0; $i < $totalFiles; $i++) {
+                // Validar errores de subida
+                if ($_FILES['archivos']['error'][$i] !== UPLOAD_ERR_OK) {
+                    $errorCode = $_FILES['archivos']['error'][$i];
+                    $errorMsg = "Error en el archivo " . htmlspecialchars($_FILES['archivos']['name'][$i]) . " (código: $errorCode)";
+                    switch ($errorCode) {
+                        case UPLOAD_ERR_INI_SIZE:
+                        case UPLOAD_ERR_FORM_SIZE:
+                            $errorMsg = "El archivo " . htmlspecialchars($_FILES['archivos']['name'][$i]) . " excede el tamaño máximo permitido.";
+                            break;
+                        case UPLOAD_ERR_PARTIAL:
+                            $errorMsg = "El archivo " . htmlspecialchars($_FILES['archivos']['name'][$i]) . " se subió parcialmente.";
+                            break;
+                    }
+                    $_SESSION['error'] = $errorMsg;
+                    header('Location: /Aaapumac/callcenter/modals');
+                    exit();
                 }
-            }
-            
-            // 5. Verificar por extensión como último recurso
-            if (!$isValid) {
-                $extension = strtolower(pathinfo($_FILES['archivo']['name'], PATHINFO_EXTENSION));
-                $allowedExtensions = ['pdf', 'doc', 'docx', 'txt'];
+
+                // Validar tamaño
+                if ($_FILES['archivos']['size'][$i] > $maxSize) {
+                    $_SESSION['error'] = "El archivo " . htmlspecialchars($_FILES['archivos']['name'][$i]) . " excede los 10MB";
+                    header('Location: /Aaapumac/callcenter/modals');
+                    exit();
+                }
+
+                // Validar tipo de contenido (MIME)
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, $_FILES['archivos']['tmp_name'][$i]);
+                finfo_close($finfo);
                 
-                if (in_array($extension, $allowedExtensions)) {
-                    // Si la extensión es pdf o txt, aceptarlo
-                    if ($extension === 'pdf' || $extension === 'txt') {
-                        $isValid = true;
-                        $detectedType = "Archivo con extensión .$extension aceptado";
+                // Lista ampliada de MIME aceptados (incluyendo text/plain por si viene como texto)
+                $allowedMimes = ['application/pdf', 'application/x-pdf', 'text/plain', 'application/octet-stream'];
+                if (!in_array($mime, $allowedMimes)) {
+                    // Verificar firma manual como respaldo
+                    $handle = fopen($_FILES['archivos']['tmp_name'][$i], 'rb');
+                    $firstBytes = fread($handle, 1024);
+                    fclose($handle);
+                    if (strpos($firstBytes, '%PDF') === false && strpos($firstBytes, 'PDF') === false) {
+                        $_SESSION['error'] = "El archivo " . htmlspecialchars($_FILES['archivos']['name'][$i]) . " no es un PDF válido (MIME: $mime)";
+                        header('Location: /Aaapumac/callcenter/modals');
+                        exit();
                     }
                 }
-            }
-            
-            // 6. Validación final
-            if (!$isValid) {
-                $errorMsg = "No es un archivo válido. ";
-                $errorMsg .= "Tipo detectado: $detectedType. ";
-                $errorMsg .= "Solo se permiten archivos PDF o Word.";
-                
-                if ($realMime) {
-                    $errorMsg .= " MIME real: $realMime";
-                }
-                
-                $_SESSION['error'] = $errorMsg;
-                
-                error_log("Archivo rechazado: " . $_FILES['archivo']['name'] . 
-                          " - MIME navegador: " . $_FILES['archivo']['type'] . 
-                          " - MIME real: " . ($realMime ?? 'no detectado') . 
-                          " - Primeros bytes: " . bin2hex(substr($firstBytes, 0, 20)));
-                
-                header('Location: /Aaapumac/callcenter/modals');
-                exit();
-            }
-            
-            // ========== FIN DE VALIDACIÓN ==========
-            
-            // Guardar información de depuración
-            $_SESSION['upload_debug'] = "Archivo validado: $detectedType";
-            
-            // Generar nombre único
-            $originalName = $_FILES['archivo']['name'];
-            $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-            $baseName = preg_replace('/[^a-zA-Z0-9_-]/', '', pathinfo($originalName, PATHINFO_FILENAME));
-            $fileName = $baseName . '_' . uniqid() . '.' . $fileExtension;
-            $uploadFile = $uploadDir . $fileName;
-            
-            if (file_exists($uploadFile)) {
-                $fileName = $baseName . '_' . uniqid() . '_' . time() . '.' . $fileExtension;
+
+                // Generar nombre único y mover archivo
+                $originalName = $_FILES['archivos']['name'][$i];
+                $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+                $baseName = preg_replace('/[^a-zA-Z0-9_-]/', '', pathinfo($originalName, PATHINFO_FILENAME));
+                $fileName = $baseName . '_' . uniqid() . '.' . $fileExtension;
                 $uploadFile = $uploadDir . $fileName;
-            }
-            
-            if (move_uploaded_file($_FILES['archivo']['tmp_name'], $uploadFile)) {
-                $filePath = '/Aaapumac/src/views/assets/files/' . $fileName;
-                $_POST['archivo'] = $filePath;
-            } else {
-                $_SESSION['error'] = "Error al subir el archivo. Verifique los permisos del servidor.";
-                header('Location: /Aaapumac/callcenter/modals');
-                exit();
+
+                // Evitar colisiones
+                if (file_exists($uploadFile)) {
+                    $fileName = $baseName . '_' . uniqid() . '_' . time() . '.' . $fileExtension;
+                    $uploadFile = $uploadDir . $fileName;
+                }
+
+                if (move_uploaded_file($_FILES['archivos']['tmp_name'][$i], $uploadFile)) {
+                    $archivosPaths[] = '/Aaapumac/src/views/assets/files/' . $fileName;
+                } else {
+                    $_SESSION['error'] = "Error al guardar el archivo " . htmlspecialchars($originalName) . ". Permisos insuficientes.";
+                    header('Location: /Aaapumac/callcenter/modals');
+                    exit();
+                }
             }
         } else {
-            $errorCode = $_FILES['archivo']['error'] ?? 'No definido';
-            $_SESSION['error'] = "Debe seleccionar un archivo válido. Error: $errorCode";
-            header('Location: /Aaapumac/callcenter/modals');
-            exit();
+            // Si no se selecciona ningún archivo, puedes decidir si es obligatorio o no.
+            // Aquí lo tratamos como opcional, pero si quieres que sea obligatorio, descomenta:
+            // $_SESSION['error'] = "Debe seleccionar al menos un archivo PDF";
+            // header('Location: /Aaapumac/callcenter/modals');
+            // exit();
         }
 
-        // Agregar fechas de creación
+        // Guardar el array de rutas como JSON en $_POST['archivo']
+        $_POST['archivo'] = json_encode($archivosPaths);
+
+        // Agregar fechas de creación y actualización
         $_POST['created_at'] = date('Y-m-d H:i:s');
         $_POST['updated_at'] = date('Y-m-d H:i:s');
 
+        // Crear el aviso en la base de datos mediante el repositorio
         $aviso = callacenterRepository::addAviso();
         callacenterRepository::setAviso($aviso, $_POST);
 
-        $_SESSION['success'] = "Aviso creado exitosamente";
+        $_SESSION['success'] = "Aviso creado exitosamente con " . count($archivosPaths) . " archivo(s) adjunto(s).";
         header('Location: /Aaapumac/callcenter/modals');
         exit();
     }
 }
 
-    public static function ActualizarAviso()
-    {
-        \Utils\AuthHelper::requireAuth(5);
+   public static function ActualizarAviso()
+{
+    \Utils\AuthHelper::requireAuth(5);
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $id = $_POST['id'];
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+        // Detectar si POST fue rechazado por exceder post_max_size
+        if (empty($_POST) && empty($_FILES) && !empty($_SERVER['CONTENT_LENGTH'])) {
+            $postMaxSize = ini_get('post_max_size');
+            $uploadMaxFilesize = ini_get('upload_max_filesize');
+            $_SESSION['error'] = "El tamaño total de la solicitud excede el límite del servidor. " .
+                                "post_max_size=$postMaxSize, upload_max_filesize=$uploadMaxFilesize. " .
+                                "Intente con archivos más pequeños o contacte al administrador.";
+            header('Location: /Aaapumac/callcenter/modals');
+            exit();
+        }
+        
+        $id = $_POST['id'];
+        $avisoActual = callacenterRepository::findAviso($id);
+        
+        if (!$avisoActual) {
+            $_SESSION['error'] = "El aviso no existe";
+            header('Location: /Aaapumac/callcenter/modals');
+            exit();
+        }
 
-            $avisoActual = callacenterRepository::findAviso($id);
+        // ---------- PROCESAR IMAGEN (si se sube nueva) ----------
+        if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/img/modal/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
 
-            if (!$avisoActual) {
-                $_SESSION['error'] = "El aviso no existe";
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+            $fileType = $_FILES['image']['type'];
+            if (!in_array($fileType, $allowedTypes)) {
+                $_SESSION['error'] = "Solo se permiten archivos de imagen (JPEG, PNG, GIF, WEBP)";
                 header('Location: /Aaapumac/callcenter/modals');
                 exit();
             }
 
-            // Procesar la nueva imagen si se subió
-            if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/img/modal/';
+            $originalName = $_FILES['image']['name'];
+            $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
+            $baseName = preg_replace('/[^a-zA-Z0-9_-]/', '', pathinfo($originalName, PATHINFO_FILENAME));
+            $imageName = $baseName . '_' . uniqid() . '.' . $fileExtension;
+            $uploadFile = $uploadDir . $imageName;
 
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
-                }
-
-                $originalName = $_FILES['image']['name'];
-                $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                $baseName = pathinfo($originalName, PATHINFO_FILENAME);
-                $imageName = $baseName . '_' . uniqid() . '.' . $fileExtension;
+            if (file_exists($uploadFile)) {
+                $imageName = $baseName . '_' . uniqid() . '_' . time() . '.' . $fileExtension;
                 $uploadFile = $uploadDir . $imageName;
-
-                if (file_exists($uploadFile)) {
-                    $imageName = $baseName . '_' . uniqid() . '.' . $fileExtension;
-                    $uploadFile = $uploadDir . $imageName;
-                }
-
-                if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
-                    // Eliminar la imagen anterior si existe
-                    if ($avisoActual->getImage()) {
-                        $oldImagePath = $_SERVER['DOCUMENT_ROOT'] . $avisoActual->getImage();
-                        if (file_exists($oldImagePath) && is_file($oldImagePath)) {
-                            unlink($oldImagePath);
-                        }
-                    }
-                    $imagePath = '/Aaapumac/src/views/assets/img/modal/' . $imageName;
-                    $_POST['image'] = $imagePath;
-                }
-            } else {
-                $_POST['image'] = $avisoActual->getImage();
             }
 
-            // Procesar el nuevo archivo si se subió - Usando 'archivo'
-            if (isset($_FILES['archivo']) && $_FILES['archivo']['error'] === UPLOAD_ERR_OK) {
-                $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/files/';
-
-                if (!is_dir($uploadDir)) {
-                    mkdir($uploadDir, 0755, true);
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $uploadFile)) {
+                // Eliminar imagen anterior si existe
+                $oldImage = $avisoActual->getImage();
+                if ($oldImage && file_exists($_SERVER['DOCUMENT_ROOT'] . $oldImage)) {
+                    unlink($_SERVER['DOCUMENT_ROOT'] . $oldImage);
                 }
+                $_POST['image'] = '/Aaapumac/src/views/assets/img/modal/' . $imageName;
+            } else {
+                $_SESSION['error'] = "Error al subir la nueva imagen";
+                header('Location: /Aaapumac/callcenter/modals');
+                exit();
+            }
+        } else {
+            // Mantener la imagen actual
+            $_POST['image'] = $avisoActual->getImage();
+        }
 
-                $allowedFileTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-                $fileType = $_FILES['archivo']['type'];
+        // ---------- GESTIÓN DE MÚLTIPLES ARCHIVOS PDF ----------
+        // Obtener array actual de archivos (el modelo ya decodifica JSON)
+        $archivosActuales = $avisoActual->getArchivosArray();
 
-                if (!in_array($fileType, $allowedFileTypes)) {
-                    $_SESSION['error'] = "Solo se permiten archivos PDF o Word";
+        // 1. Eliminar archivos marcados por el usuario
+        if (isset($_POST['eliminar_archivos']) && is_array($_POST['eliminar_archivos'])) {
+            foreach ($_POST['eliminar_archivos'] as $ruta) {
+                // Eliminar físicamente el archivo del servidor
+                $fullPath = $_SERVER['DOCUMENT_ROOT'] . $ruta;
+                if (file_exists($fullPath) && is_file($fullPath)) {
+                    unlink($fullPath);
+                }
+                // Eliminar del array
+                $key = array_search($ruta, $archivosActuales);
+                if ($key !== false) {
+                    unset($archivosActuales[$key]);
+                }
+            }
+            // Reindexar array
+            $archivosActuales = array_values($archivosActuales);
+        }
+
+        // 2. Agregar nuevos archivos (input name="nuevos_archivos[]")
+        if (isset($_FILES['nuevos_archivos']) && !empty($_FILES['nuevos_archivos']['name'][0])) {
+            $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/Aaapumac/src/views/assets/files/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+
+            $totalFiles = count($_FILES['nuevos_archivos']['name']);
+            $maxSize = 10 * 1024 * 1024; // 10 MB
+
+            for ($i = 0; $i < $totalFiles; $i++) {
+                if ($_FILES['nuevos_archivos']['error'][$i] !== UPLOAD_ERR_OK) {
+                    $_SESSION['error'] = "Error en nuevo archivo: " . htmlspecialchars($_FILES['nuevos_archivos']['name'][$i]);
+                    header('Location: /Aaapumac/callcenter/modals');
+                    exit();
+                }
+                if ($_FILES['nuevos_archivos']['size'][$i] > $maxSize) {
+                    $_SESSION['error'] = "El archivo " . htmlspecialchars($_FILES['nuevos_archivos']['name'][$i]) . " excede 10MB";
                     header('Location: /Aaapumac/callcenter/modals');
                     exit();
                 }
 
-                $maxSize = 10 * 1024 * 1024; // 10MB
-                if ($_FILES['archivo']['size'] > $maxSize) {
-                    $_SESSION['error'] = "El archivo no debe exceder los 10MB";
-                    header('Location: /Aaapumac/callcenter/modals');
-                    exit();
+                // Validar MIME con finfo
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, $_FILES['nuevos_archivos']['tmp_name'][$i]);
+                finfo_close($finfo);
+                
+                $allowedMimes = ['application/pdf', 'application/x-pdf', 'text/plain', 'application/octet-stream'];
+                if (!in_array($mime, $allowedMimes)) {
+                    // Verificar firma PDF como respaldo
+                    $handle = fopen($_FILES['nuevos_archivos']['tmp_name'][$i], 'rb');
+                    $firstBytes = fread($handle, 1024);
+                    fclose($handle);
+                    if (strpos($firstBytes, '%PDF') === false && strpos($firstBytes, 'PDF') === false) {
+                        $_SESSION['error'] = "El archivo " . htmlspecialchars($_FILES['nuevos_archivos']['name'][$i]) . " no es un PDF válido";
+                        header('Location: /Aaapumac/callcenter/modals');
+                        exit();
+                    }
                 }
 
-                $originalName = $_FILES['archivo']['name'];
+                // Generar nombre único
+                $originalName = $_FILES['nuevos_archivos']['name'][$i];
                 $fileExtension = pathinfo($originalName, PATHINFO_EXTENSION);
-                $baseName = pathinfo($originalName, PATHINFO_FILENAME);
+                $baseName = preg_replace('/[^a-zA-Z0-9_-]/', '', pathinfo($originalName, PATHINFO_FILENAME));
                 $fileName = $baseName . '_' . uniqid() . '.' . $fileExtension;
                 $uploadFile = $uploadDir . $fileName;
 
                 if (file_exists($uploadFile)) {
-                    $fileName = $baseName . '_' . uniqid() . '.' . $fileExtension;
+                    $fileName = $baseName . '_' . uniqid() . '_' . time() . '.' . $fileExtension;
                     $uploadFile = $uploadDir . $fileName;
                 }
 
-                if (move_uploaded_file($_FILES['archivo']['tmp_name'], $uploadFile)) {
-                    // Eliminar el archivo anterior si existe
-                    if ($avisoActual->getArchivo()) {
-                        $oldFilePath = $_SERVER['DOCUMENT_ROOT'] . $avisoActual->getArchivo();
-                        if (file_exists($oldFilePath) && is_file($oldFilePath)) {
-                            unlink($oldFilePath);
-                        }
-                    }
-                    $filePath = '/Aaapumac/src/views/assets/files/' . $fileName;
-                    $_POST['archivo'] = $filePath;
+                if (move_uploaded_file($_FILES['nuevos_archivos']['tmp_name'][$i], $uploadFile)) {
+                    $archivosActuales[] = '/Aaapumac/src/views/assets/files/' . $fileName;
+                } else {
+                    $_SESSION['error'] = "Error al guardar el archivo " . htmlspecialchars($originalName);
+                    header('Location: /Aaapumac/callcenter/modals');
+                    exit();
                 }
-            } else {
-                // Mantener el archivo actual si no se subió nuevo
-                $_POST['archivo'] = $avisoActual->getArchivo();
             }
-
-            // Verificar si el estado visible está cambiando
-            $visibleChanged = false;
-            if (isset($_POST['visible'])) {
-                $currentVisible = $avisoActual->getVisible();
-                $newVisible = $_POST['visible'];
-                $visibleChanged = ($currentVisible != $newVisible);
-            }
-
-            if ($visibleChanged) {
-                $_POST['created_at'] = date('Y-m-d H:i:s');
-            }
-
-            $_POST['updated_at'] = date('Y-m-d H:i:s');
-
-            $result = callacenterRepository::updateAviso($id, $_POST);
-
-            if ($result) {
-                $_SESSION['success'] = "Aviso actualizado exitosamente";
-            } else {
-                $_SESSION['error'] = "Error al actualizar el aviso";
-            }
-
-            header('Location: /Aaapumac/callcenter/modals');
-            exit();
         }
+
+        // Guardar el array actualizado como JSON en $_POST['archivo']
+        $_POST['archivo'] = json_encode($archivosActuales);
+
+        // ---------- MANEJO DE ESTADO Y FECHAS ----------
+        $visibleChanged = false;
+        if (isset($_POST['visible'])) {
+            $currentVisible = $avisoActual->getVisible();
+            $newVisible = (int)$_POST['visible'];
+            $visibleChanged = ($currentVisible != $newVisible);
+            
+            // Si se está activando (de 0 a 1), reiniciar created_at (inicio del ciclo de 24h)
+            if ($visibleChanged && $newVisible == 1) {
+                $_POST['created_at'] = date('Y-m-d H:i:s');
+            } else {
+                // Mantener el created_at original si no cambia a activo
+                $_POST['created_at'] = $avisoActual->getCreatedAt();
+            }
+        } else {
+            $_POST['visible'] = $avisoActual->getVisible();
+            $_POST['created_at'] = $avisoActual->getCreatedAt();
+        }
+
+        // Siempre actualizar updated_at
+        $_POST['updated_at'] = date('Y-m-d H:i:s');
+
+        // ---------- ACTUALIZAR EN BASE DE DATOS ----------
+        $result = callacenterRepository::updateAviso($id, $_POST);
+
+        if ($result) {
+            $mensaje = "Aviso actualizado exitosamente.";
+            if ($visibleChanged && $_POST['visible'] == 1) {
+                $mensaje .= " El aviso ha sido reactivado, el contador de 24 horas se ha reiniciado.";
+            }
+            $_SESSION['success'] = $mensaje;
+        } else {
+            $_SESSION['error'] = "Error al actualizar el aviso";
+        }
+
+        header('Location: /Aaapumac/callcenter/modals');
+        exit();
     }
+}
     public static function ToggleAvisoStatus()
     {
         \Utils\AuthHelper::requireAuth(5);

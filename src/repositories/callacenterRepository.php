@@ -21,8 +21,11 @@ class callacenterRepository
         ];
 
         if ($search !== '') {
-            $filters['where'] = '(title LIKE :search OR description LIKE :search)';
-            $filters['replaces'] = [':search' => '%' . $search . '%'];
+            $filters['where'] = '(title LIKE :search_title OR description LIKE :search_desc)';
+            $filters['replaces'] = [
+                ':search_title' => '%' . $search . '%',
+                ':search_desc'  => '%' . $search . '%'
+            ];
         }
 
         return $modal->select(
@@ -40,10 +43,10 @@ class callacenterRepository
             'id, title, description, image, archivo, created_at, visible',
             [
                 'order' => 'created_at DESC',
-                'limit' => '0, 50'  
+                'limit' => '0, 50'
             ],
             false
-        );  
+        );
     }
 
     public static function countActiveAvisos()
@@ -65,8 +68,11 @@ class callacenterRepository
 
         $filters = [];
         if ($search !== '') {
-            $filters['where'] = '(title LIKE :search OR description LIKE :search)';
-            $filters['replaces'] = [':search' => '%' . $search . '%'];
+            $filters['where'] = '(title LIKE :search_title OR description LIKE :search_desc)';
+            $filters['replaces'] = [
+                ':search_title' => '%' . $search . '%',
+                ':search_desc'  => '%' . $search . '%'
+            ];
         }
 
         $result = $modal->select(

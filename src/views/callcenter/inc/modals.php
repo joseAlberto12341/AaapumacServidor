@@ -52,55 +52,55 @@
     $searchTerm = trim($_GET['search'] ?? '');
     $searchQuery = $searchTerm !== '' ? '&search=' . urlencode($searchTerm) : '';
     ?>
- <!-- Barra de filtrado por título mejorada -->
-<form method="get" action="<?php echo $baseUrl; ?>" class="filtro-barra mb-4">
-    <div class="filtro-grupo">
+    <!-- Barra de filtrado por título mejorada -->
+    <form method="get" action="<?php echo $baseUrl; ?>" class="filtro-barra mb-4">
+      <div class="filtro-grupo">
         <div class="filtro-input-wrapper">
-            <i class="mdi mdi-magnify filtro-icono"></i>
-            <input type="text" name="search" class="filtro-input" 
-                   placeholder="Buscar por título..." 
-                   value="<?php echo htmlspecialchars($searchTerm); ?>"
-                   aria-label="Buscar documentos">
+          <i class="mdi mdi-magnify filtro-icono"></i>
+          <input type="text" name="search" class="filtro-input"
+            placeholder="Buscar por título..."
+            value="<?php echo htmlspecialchars($searchTerm); ?>"
+            aria-label="Buscar documentos">
         </div>
         <div class="filtro-acciones">
-            <button type="submit" class="btn-filtro btn-filtro-primary">
-                <i class="mdi mdi-filter-outline"></i>
-                <span>Filtrar</span>
-            </button>
-            <a href="<?php echo $baseUrl; ?>" class="btn-filtro btn-filtro-secondary">
-                <i class="mdi mdi-close-circle-outline"></i>
-                <span>Limpiar</span>
-            </a>
+          <button type="submit" class="btn-filtro btn-filtro-primary">
+            <i class="mdi mdi-filter-outline"></i>
+            <span>Filtrar</span>
+          </button>
+          <a href="<?php echo $baseUrl; ?>" class="btn-filtro btn-filtro-secondary">
+            <i class="mdi mdi-close-circle-outline"></i>
+            <span>Limpiar</span>
+          </a>
         </div>
-    </div>
-    <input type="hidden" name="page" value="1">
-</form>
+      </div>
+      <input type="hidden" name="page" value="1">
+    </form>
 
-<!-- Paginador mejorado -->
-<div class="paginador-moderno">
-    <form method="get" action="<?php echo $baseUrl; ?>" class="paginador-form">
+    <!-- Paginador mejorado -->
+    <div class="paginador-moderno">
+      <form method="get" action="<?php echo $baseUrl; ?>" class="paginador-form">
         <div class="paginador-info">
-            <i class="mdi mdi-table-rows"></i>
-            <span>Mostrar</span>
+          <i class="mdi mdi-table-rows"></i>
+          <span>Mostrar</span>
         </div>
         <div class="paginador-selector">
-            <select name="per_page" class="paginador-select" onchange="this.form.submit()" aria-label="Registros por página">
-                <?php foreach ([5, 10, 15, 25, 50, 100] as $size): ?>
-                    <option value="<?php echo $size; ?>" <?php echo $perPage == $size ? 'selected' : ''; ?>>
-                        <?php echo $size; ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <span>registros por página</span>
+          <select name="per_page" class="paginador-select" onchange="this.form.submit()" aria-label="Registros por página">
+            <?php foreach ([5, 10, 15, 25, 50, 100] as $size): ?>
+              <option value="<?php echo $size; ?>" <?php echo $perPage == $size ? 'selected' : ''; ?>>
+                <?php echo $size; ?>
+              </option>
+            <?php endforeach; ?>
+          </select>
+          <span>registros por página</span>
         </div>
         <input type="hidden" name="page" value="1">
         <?php if ($searchTerm !== ''): ?>
-            <input type="hidden" name="search" value="<?php echo htmlspecialchars($searchTerm); ?>">
+          <input type="hidden" name="search" value="<?php echo htmlspecialchars($searchTerm); ?>">
         <?php endif; ?>
-    </form>
-</div>
+      </form>
+    </div>
 
-
+    <!-- Tabla de avisos -->
     <div class="table-responsive tabla">
       <table id="order-listing-callcenter" class="table table-responsive table-hover table-bordered">
         <thead class="table-primary">
@@ -110,9 +110,9 @@
             <th>Descripción</th>
             <th>Imagen</th>
             <th>Archivo</th>
-            <th>Estado</th>
+            <!-- <th>Estado</th> -->
             <th>Fechas</th>
-            <th>Acciones Estado</th>
+            <!-- <th>Acciones Estado</th> -->
           </tr>
         </thead>
         <tbody>
@@ -144,15 +144,26 @@
                 <?php endif; ?>
               </td>
               <td>
-                <?php if ($m->getArchivo()): ?>
-                  <a href="<?php echo $m->getArchivo(); ?>" target="_blank" class="btn btn-sm btn-info">
-                    <i class="mdi mdi-file-pdf"></i> Ver Archivo
-                  </a>
+                <?php
+                $archivos = $m->getArchivosArray();
+                if (!empty($archivos)): ?>
+                  <div class="dropdown">
+                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                      <i class="mdi mdi-file-pdf"></i> Ver archivos (<?= count($archivos) ?>)
+                    </button>
+                    <ul class="dropdown-menu">
+                      <?php foreach ($archivos as $ruta): ?>
+                        <li><a class="dropdown-item" href="<?= htmlspecialchars($ruta) ?>" target="_blank">
+                            <i class="mdi mdi-file-pdf"></i> <?= htmlspecialchars(basename($ruta)) ?>
+                          </a></li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
                 <?php else: ?>
-                  <span class="text-muted">Sin archivo</span>
+                  <span class="text-muted">Sin archivos</span>
                 <?php endif; ?>
               </td>
-              <td>
+              <!-- <td>
                 <?php
                 switch ($m->getVisible()) {
                   case 0:
@@ -163,7 +174,7 @@
                     break;
                 }
                 ?>
-              </td>
+              </td> -->
               <td>
                 <small class="text-muted">
                   <strong>Creado originalmente:</strong>
@@ -184,11 +195,11 @@
                     $expiresAt = clone $updated;
                     $expiresAt->add(new DateInterval('PT24H'));
                     ?>
-                    <strong>Expira en:</strong>
+                    <!-- <strong>Expira en:</strong> -->
                     <?php if ($hoursLeft > 0): ?>
-                      <span class="badge bg-success" title="Expira: <?php echo $expiresAt->format('d/m/Y H:i'); ?>">
+                      <!-- <span class="badge bg-success" title="Expira: <?php echo $expiresAt->format('d/m/Y H:i'); ?>">
                         <?php echo $hoursLeft; ?> horas
-                      </span><br>
+                      </span><br> -->
                       <small><em>Hora exacta: <?php echo $expiresAt->format('d/m/Y H:i'); ?></em></small>
                     <?php else: ?>
                       <span class="badge bg-danger">¡Expirado!</span><br>
@@ -197,7 +208,7 @@
                   <?php endif; ?>
                 </small>
               </td>
-              <td>
+              <!-- <td>
                 <form method="POST" action="/Aaapumac/callcenter/ToggleAvisoStatus" class="d-inline">
                   <input type="hidden" name="id" value="<?php echo $m->getId(); ?>">
                   <button type="submit"
@@ -208,7 +219,7 @@
                     <?php echo $m->getVisible() ? ' Desactivar' : ' Activar'; ?>
                   </button>
                 </form>
-              </td>
+              </td> -->
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -308,19 +319,24 @@
           </div>
           <!--imagen-->
           <div class="mb-3">
-            <label for="image" class="form-label">Imagen</label>
+            <label for="image" class="form-label">Imagen (JPEG, PNG, GIF, WEBP)</label>
             <div class="input-group">
-              <input type="file" class="form-control imagen-modal" id="image" name="image" required aria-label="image">
+              <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" class="form-control imagen-modal" id="image" name="image" required aria-label="image">
             </div>
           </div>
           <!--alta de archivo-->
 
           <div class="mb-3">
-            <label for="archivo" class="form-label">Archivo PDF</label>
+            <label for="archivos" class="form-label">Archivos PDF (máx. 10 MB c/u, múltiples)</label>
             <div class="input-group">
-              <input type="file" class="form-control archivo-modal" id="archivo" name="archivo" required
-                aria-label="archivo">
+              <input type="file" accept="application/pdf"
+                class="form-control archivo-modal"
+                id="archivos"
+                name="archivos[]"
+                multiple
+                aria-label="archivos múltiples">
             </div>
+            <small class="text-muted">Seleccione uno o varios archivos PDF (CTRL + clic para múltiples)</small>
           </div>
           <!--Estado del aviso-->
           <div class="mb-3">
@@ -345,14 +361,14 @@
 </div>
 <!-- Fin Modal nuevo Aviso -->
 
-<!-- Modal Editar Aviso -->
+<!-- Modal Editar Aviso con múltiples archivos -->
 <?php foreach ($answer['modal'] as $m): ?>
   <div class="modal fade" id="modal-edit-modal-<?php echo $m->getId(); ?>" tabindex="-1"
     aria-labelledby="EditModalLabel-<?php echo $m->getId(); ?>" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content" id="contenedor-editarAviso">
         <div class="modal-header header-modaleditarAviso">
-          <i class="mdi mdi-bell-ring " id="icono-editarAviso"></i>
+          <i class="mdi mdi-bell-ring" id="icono-editarAviso"></i>
           <h5 class="modal-title" id="EditModalLabel-<?php echo $m->getId(); ?>"><strong>Editar Aviso</strong></h5>
           <button type="button" class="btn-close cerrarEditar" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -361,16 +377,17 @@
             action="/Aaapumac/callcenter/ActualizarAviso" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo $m->getId(); ?>">
 
-            <!--Titulo editar-->
+            <!-- Título -->
             <div class="mb-3">
-              <label for="title-<?php echo $m->getId(); ?>" class="form-label">Titulo</label>
+              <label for="title-<?php echo $m->getId(); ?>" class="form-label">Título</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="mdi mdi-format-size"></i></span>
                 <input type="text" class="form-control editar-titulo" id="title-<?php echo $m->getId(); ?>" name="title"
-                  required value="<?php echo htmlspecialchars($m->getTitle()); ?>" placeholder="Titulo">
+                  required value="<?php echo htmlspecialchars($m->getTitle()); ?>" placeholder="Título">
               </div>
             </div>
-            <!--descripcion editar-->
+
+            <!-- Descripción -->
             <div class="mb-3">
               <label for="description-<?php echo $m->getId(); ?>" class="form-label">Descripción</label>
               <div class="input-group">
@@ -380,43 +397,58 @@
                   placeholder="Descripción">
               </div>
             </div>
-            <!--imagen editar-->
+
+            <!-- Imagen -->
             <div class="mb-3">
-              <label for="image-<?php echo $m->getId(); ?>" class="form-label">Imagen</label>
+              <label for="image-<?php echo $m->getId(); ?>" class="form-label">Imagen (JPEG, PNG, GIF, WEBP)</label>
               <div class="input-group">
-                <input type="file" class="form-control editar-imagen" id="image-<?php echo $m->getId(); ?>" name="image">
+                <input type="file" accept="image/jpeg,image/png,image/gif,image/webp" class="form-control editar-imagen" id="image-<?php echo $m->getId(); ?>" name="image">
               </div>
               <small class="text-muted">Imagen actual:
                 <?php echo htmlspecialchars(basename($m->getImage() ?? '')); ?></small>
               <?php if ($m->getImage()): ?>
                 <div>
-                  <img src="<?php echo $m->getImage(); ?>" id="mostrarImegen-editar" alt="Imagen actual">
+                  <img src="<?php echo $m->getImage(); ?>" id="mostrarImegen-editar" alt="Imagen actual" style="max-width: 100px; max-height: 100px;">
                 </div>
               <?php endif; ?>
             </div>
 
-            <!--editar archivo-->
+            <!-- ========== SECCIÓN DE MÚLTIPLES ARCHIVOS PDF ========== -->
             <div class="mb-3">
-              <label for="archivo-<?php echo $m->getId(); ?>" class="form-label">Archivo PDF/Word</label>
-              <div class="input-group">
-                <input type="file" class="form-control editar-archivo" id="archivo-<?php echo $m->getId(); ?>"
-                  name="archivo">
-              </div>
-              <?php if ($m->getArchivo()): ?>
-                <small class="text-muted">
-                  Archivo actual: <a href="<?php echo $m->getArchivo(); ?>" target="_blank">Ver archivo</a>
-                </small>
+              <label class="form-label">Archivos PDF actuales:</label>
+              <?php
+              // Obtener array de archivos desde el modelo (debe tener método getArchivosArray)
+              $archivosArray = $m->getArchivosArray();
+              if (!empty($archivosArray)): ?>
+                <?php foreach ($archivosArray as $ruta): ?>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="eliminar_archivos[]" value="<?= htmlspecialchars($ruta) ?>" id="del_<?= $m->getId() ?>_<?= md5($ruta) ?>">
+                    <label class="form-check-label" for="del_<?= $m->getId() ?>_<?= md5($ruta) ?>">
+                      <a href="<?= $ruta ?>" target="_blank"><?= htmlspecialchars(basename($ruta)) ?></a>
+                    </label>
+                  </div>
+                <?php endforeach; ?>
+                <small class="text-muted">Marque los archivos que desea eliminar.</small>
               <?php else: ?>
-                <small class="text-muted">No hay archivo subido</small>
+                <p class="text-muted">No hay archivos adjuntos.</p>
               <?php endif; ?>
             </div>
-            <!--estado editar-->
+
+            <div class="mb-3">
+              <label for="nuevos_archivos_<?= $m->getId() ?>" class="form-label">Agregar nuevos PDFs (máx. 10 MB c/u, múltiples)</label>
+              <div class="input-group">
+                <input type="file" accept="application/pdf" class="form-control" id="nuevos_archivos_<?= $m->getId() ?>" name="nuevos_archivos[]" multiple>
+              </div>
+              <small class="text-muted">Seleccione uno o varios archivos PDF (CTRL + clic para múltiples). Los archivos nuevos se añadirán a los existentes.</small>
+            </div>
+            <!-- ========== FIN SECCIÓN ARCHIVOS ========== -->
+
+            <!-- Estado -->
             <div class="mb-3">
               <label for="visible-<?php echo $m->getId(); ?>" class="form-label">Estado</label>
               <div class="input-group">
                 <span class="input-group-text"><i class="mdi mdi-clipboard-check"></i></span>
-                <select class="form-control estado-editar" id="visible-<?php echo $m->getId(); ?>" name="visible"
-                  required>
+                <select class="form-control estado-editar" id="visible-<?php echo $m->getId(); ?>" name="visible" required>
                   <option value="1" <?php echo $m->getVisible() == 1 ? 'selected' : ''; ?>>Activo</option>
                   <option value="0" <?php echo $m->getVisible() == 0 ? 'selected' : ''; ?>>Inactivo</option>
                 </select>
@@ -426,9 +458,9 @@
               </small>
             </div>
 
+            <!-- Botones -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
-                style="border-radius: 5px;">Cancelar</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" style="border-radius: 5px;">Cancelar</button>
               <button type="submit" class="btn btn-warning actualizar">Actualizar</button>
             </div>
           </form>
@@ -441,3 +473,78 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/Aaapumac/src/views/assets/js/avisos-modals.js"></script>
+<script>
+  // Validación de tipos de archivo y tamaño total
+  document.addEventListener('DOMContentLoaded', function() {
+    const POST_MAX_SIZE = 8 * 1024 * 1024; // 8 MB límite POST habitual en WAMP
+
+    // Validar campo imagen (aceptar solo imágenes)
+    document.querySelectorAll('.imagen-modal').forEach(function(input) {
+      input.addEventListener('change', function() {
+        var file = this.files[0];
+        if (!file) return;
+
+        var validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+        var isValidType = validImageTypes.includes(file.type) ||
+          file.name.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp)$/);
+
+        if (!isValidType) {
+          Swal.fire('Error', 'Solo se permiten imágenes (JPEG, PNG, GIF, WEBP) en este campo.', 'error');
+          this.value = '';
+          return;
+        }
+
+        validateTotalSize();
+      });
+    });
+
+    // Validar campo PDF (aceptar solo PDF)
+    document.querySelectorAll('.archivo-modal, .editar-archivo').forEach(function(input) {
+      input.addEventListener('change', function() {
+        var file = this.files[0];
+        if (!file) return;
+
+        var isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+
+        if (!isPdf) {
+          Swal.fire('Error', 'Solo se permiten archivos PDF en este campo.', 'error');
+          this.value = '';
+          return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+          Swal.fire('Error', 'El archivo PDF no debe superar 10 MB.', 'error');
+          this.value = '';
+          return;
+        }
+
+        validateTotalSize();
+      });
+    });
+
+    // Validar tamaño total
+    function validateTotalSize() {
+      var forms = [
+        document.getElementById('avisos'),
+        ...document.querySelectorAll('.js-edit-aviso-form')
+      ].filter(f => f);
+
+      forms.forEach(function(form) {
+        if (!form) return;
+
+        var imageInput = form.querySelector('.imagen-modal, .editar-imagen');
+        var pdfInput = form.querySelector('.archivo-modal, .editar-archivo');
+
+        var imageFile = imageInput && imageInput.files[0] ? imageInput.files[0].size : 0;
+        var pdfFile = pdfInput && pdfInput.files[0] ? pdfInput.files[0].size : 0;
+        var totalSize = imageFile + pdfFile;
+
+        if (totalSize > POST_MAX_SIZE) {
+          var sizeMB = (totalSize / (1024 * 1024)).toFixed(2);
+          var limitMB = (POST_MAX_SIZE / (1024 * 1024)).toFixed(0);
+          Swal.fire('Advertencia', 'El tamaño total (imagen + PDF) es ' + sizeMB + ' MB, excede el límite de ' + limitMB + ' MB del servidor.', 'warning');
+        }
+      });
+    }
+  });
+</script>

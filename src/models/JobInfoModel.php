@@ -22,7 +22,7 @@ class JobInfoModel extends EntityModel
     private string $contract_type = "";
     private string $benefits = "";
     private string $location = "";
-    private ?string $ContactoEmpresa = null;
+    private ?string $ContactoEmpresa = null;    
     private ?int $id_status = null;
     private string $deadline = "";
     private string $created_at = "";
@@ -222,37 +222,38 @@ class JobInfoModel extends EntityModel
         $this->ContactoEmpresa = $ContactoEmpresa;
     }
 
-    public function insert()
-    {
-        $this->connect();
+public function insert()
+{
+    $this->connect();
 
-        $sql = "INSERT INTO " . $this->table . " 
-                (title, description, image, vacancy, responsabilities, education, 
-                 experience, additional, workexperience, salary, contract_type, 
-                 benefits, location, id_status, deadline, ContactoEmpresa) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO " . $this->table . " 
+            (title, description, image, vacancy, responsabilities, education, 
+             experience, additional, workexperience, salary, contract_type, 
+             benefits, location, id_status, deadline, ContactoEmpresa) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        $stmt = $this->pdo->prepare($sql);
+    $stmt = $this->pdo->prepare($sql);
 
-        $result = $stmt->execute([
-            $this->getTitle(),
-            $this->getDescription(),
-            $this->getImage(),
-            $this->getVacancy(),
-            $this->getResponsabilities(),
-            $this->getEducation(),
-            $this->getExperience(),
-            $this->getAdditional(),
-            $this->getWorkexperience(),
-            $this->getSalary(),
-            $this->getContractType(),
-            $this->getBenefits(),
-            $this->getLocation(),
-            $this->getContactoEmpresa(),
-            $this->getIdStatus(),
-            $this->getDeadline()
-        ]);
+    $result = $stmt->execute([
+        $this->getTitle(),           // 1. title
+        $this->getDescription(),     // 2. description
+        $this->getImage(),           // 3. image
+        (int)$this->getVacancy(),    // 4. vacancy
+        $this->getResponsabilities(),// 5. responsabilities
+        $this->getEducation(),       // 6. education
+        $this->getExperience(),      // 7. experience
+        $this->getAdditional(),      // 8. additional
+        (int)$this->getWorkexperience(), // 9. workexperience
+        $this->getSalary(),          // 10. salary
+        $this->getContractType(),    // 11. contract_type
+        $this->getBenefits(),        // 12. benefits
+        $this->getLocation(),        // 13. location
+        (int)$this->getIdStatus(),   // 14. id_status (ENTERO)
+        $this->getDeadline(),        // 15. deadline
+        $this->getContactoEmpresa()  // 16. ContactoEmpresa
+    ]);
 
-        return $result;
-    }
+    return $result;
+}
+   
 }

@@ -86,7 +86,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div>  
             </div>
             <div class="contact-info mt-40 informacion-contacto">
                 <div class="widget contact-info-widget contactanos">
@@ -100,7 +100,7 @@
                             <i class="fas fa-phone" id="icono-telefono"></i>
                             (+52) 314 33 115 00
                         </li>
-                        <li>
+                        <li class="correo-contacto">
                             <i class="far fa-envelope-open" id="icono-correo"></i>
                             contacto@aaamzo.org.mx
                         </li>

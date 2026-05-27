@@ -268,12 +268,6 @@ $anunciosHandler = new AnunciosHandler();
                 <small style="color: #6c757d;">
                     <strong>Información del sistema:</strong>
                     Cada anuncio permanece visible durante 24 horas exactas.
-                    <?php if ($anunciosHandler->expirados['expirados'] > 0): ?>
-                        <br>
-                        <span style="color: #ffc107;">
-                            Nota: Hay <?php echo $anunciosHandler->expirados['expirados']; ?> anuncio(s) en proceso de limpieza automática.
-                        </span>
-                    <?php endif; ?>
                 </small>
             </div>
         <?php endif; ?>

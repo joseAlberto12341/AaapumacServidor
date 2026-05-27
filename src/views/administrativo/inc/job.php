@@ -123,8 +123,8 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Años de Experiencia</label>
                   <div class="col-sm-9">
-                    <input type="text" name="workexperience" id="workexperience" class="form-control"
-                      placeholder="Años de Experiencia" required />
+                    <input type="number" name="workexperience" id="workexperience" class="form-control"
+                      placeholder="Años de Experiencia" min="0" max="900" step="1" step="1" onkeydown="return !['e','E','+','-'].includes(event.key)"oninput="if (this.value.length > 9) this.value = this.value.slice(0, 9);"  required  />
                   </div>
                 </div>
               </div>
@@ -132,11 +132,13 @@
                 <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Salario</label>
                   <div class="col-sm-9">
-                    <input type="number" name="salary" id="salary" class="form-control" placeholder="$" required />
+                    <input
+                      type="number" name="salary" id="salary" class="form-control" placeholder="$" required min="0" max="999999999" step="1" onkeydown="return !['e','E','+','-'].includes(event.key)"oninput="if (this.value.length > 9) this.value = this.value.slice(0, 9);" />
+                  </div>
                   </div>
                 </div>
               </div>
-            </div>
+           
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group row">
